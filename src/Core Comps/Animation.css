@@ -1,0 +1,128 @@
+.slideup {
+    animation: slideup 0.3s ease-in;
+    animation-fill-mode: forwards;
+}
+
+.slidedown {
+    animation: slidedown 0.3s ease-in;
+    animation-fill-mode: forwards;
+}
+
+
+/* slideup */
+@keyframes slideup {
+    from {top: 0px;}
+    to {top: -1000px;}
+}
+
+
+/* slidedown */
+@keyframes slidedown {
+    from {top: -1000px;}
+    to {top: 0px;}
+}
+
+
+
+
+.top_ham {
+    animation: top_ham 0.5s ease-in;
+    animation-fill-mode: forwards;
+}
+.mid_ham {
+    animation: mid_ham 0.5s ease-in;
+    animation-fill-mode: forwards;
+}
+.bot_ham {
+    animation: bot_ham 0.5s ease-in;
+    animation-fill-mode: forwards;
+}
+/* Hamberger Animation */
+@keyframes top_ham {
+  0% {
+    transform: rotate(0deg) translateY(0) scaleX(1);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(45deg) translateY(15px) scaleX(1.6);
+  }
+}
+
+@keyframes mid_ham {
+    0% {
+        transform: translateX(0) scaleX(1)
+    }
+    100% {
+        transform: translateX(-6px) scaleX(0)
+    }
+}
+
+@keyframes bot_ham {
+  0% {
+    transform: rotate(0deg) translateY(0) scaleX(1);
+  }
+  100% {
+    transform: rotate(-45deg) translateY(-15px) scaleX(1.6);
+  }
+}
+
+/* reverse hamburger animation */
+.top_ham_reverse {
+    animation: top_ham_reverse 0.5s ease-in;
+    animation-fill-mode: forwards;
+}
+.mid_ham_reverse {
+    animation: mid_ham_reverse 0.5s ease-in;
+    animation-fill-mode: forwards;
+}
+.bot_ham_reverse {
+    animation: bot_ham_reverse 0.5s ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes top_ham_reverse {
+  0% {
+    transform: rotate(45deg) translateY(15px) scaleX(1.6);
+    transform-origin: center;
+  }
+  100% {
+    transform: rotate(0deg) translateY(0) scaleX(1);
+  }
+}
+
+@keyframes mid_ham_reverse {
+    0% {
+        transform: translateX(-6px) scaleX(0)
+    }
+    100% {
+        transform: translateX(0) scaleX(1)
+    }
+}
+
+@keyframes bot_ham_reverse {
+  0% {
+    transform: rotate(-45deg) translateY(-15px) scaleX(1.6);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0) scaleX(1);
+  }
+}
+
+/* Collapsible NAV links */
+
+.mid_navs_close {
+  animation: collapse_reverse 0.1s ease-in;
+}
+.mid_nav_open {
+  animation: collapse 0.1s ease-in;
+}
+
+@keyframes collapse {
+  from {left: 0px;}
+  to {left: -400px;}
+}
+
+@keyframes collapse_reverse {
+  from {left: -400px;}
+  to {left: 0px;}
+}
