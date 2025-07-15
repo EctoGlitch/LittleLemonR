@@ -69,7 +69,7 @@ function Header() {
   };
 }, []);
 
-  const navClasses = `relative bg-white text-dark_green font-p flex h-desktop_nav max-[400px]:h-mobile_nav  justify-center place-items-center sticky top-0 transition-transform duration-300
+  const navClasses = `z-50 relative bg-white text-dark_green font-p flex h-desktop_nav max-[400px]:h-mobile_nav justify-center place-items-center sticky top-0 transition-transform duration-300
   ${isHidden ? 'slideup'  : 'slidedown'}`;
 
 
@@ -77,7 +77,7 @@ function Header() {
       <nav id='nav' className={navClasses}>
           <ul className='h-8 flex flex-row w-4/5 justify-evenly place-items-center list-none '>
               <li className='max-sm:absolute max-sm:left-8'>
-                <button id='hamburger' onClick={toggleMenu}>
+                <button id='hamburger' className='hidden max-sm:block' onClick={toggleMenu}>
                   <span id='top_ham' className={`bg-dark_green h-1 w-8 m-2 max-sm:block
                     ${isOpen ? 'top_ham' : 'top_ham_reverse' }`}>
                   </span>

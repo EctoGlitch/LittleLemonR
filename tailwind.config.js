@@ -25,15 +25,29 @@ module.exports = {
       'p': ['karla', 'san-serif']
     },
     extend: {
+      gridTemplateColumns: {
+        'footer': 'repeat(4, minmax(0, 25%))',
+      },
       height: {
         'desktop_nav' : '150px',
         'desktop_btn': '80px',
         'mobile_nav' : '100px'
       },
+      width: {
+        'hero-width' : '440px'
+      },
+      fontSize: {
+        display_size: '64pt',
+        sub_title_size: '48pt',
+        lead_text: '14pt',
+        paragraph: '13pt'
+      },
+
       spacing: {
       },
+
       borderRadius: {
-        '4xl': '8px',
+        '4xl': '16px',
       }
     }
   },

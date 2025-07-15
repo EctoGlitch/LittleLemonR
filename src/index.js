@@ -5,9 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-
-import Header from './Core Comps/Header';
-
 //pages
 import Home from './Core Comps/Home'
 import About from './Core Comps/About';
