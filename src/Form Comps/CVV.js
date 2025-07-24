@@ -19,26 +19,29 @@ const CVV_Input = ({ label, name, touched, error }) => {
     }
 
     return (
-        <div className='w-full flex flex-col'>
-            <label className='font-p text-black font-bold py-3'>{ label }</label>
-            <Field
-                className='font-p text-black h-[80px] p-6 rounded-4xl'
-                type="text"
-                name={name}
-                placeholder={label}
-                inputMode="numeric"
-                maxLength="3"
-                value={displayValue}
-                onChange={handleCVVChange}
-            />
-            {touched && error ? (
-                <div className='h-10 text-red-700 py-4'>
-                    <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />
-                </div>) : (
-                <div className='h-10 text-red-700 py-4'></div>
-                )
-            }
-        </div>
+        <>
+            <div className='w-full flex flex-col'>
+                <label className='font-p text-black font-bold py-3'>{ label }</label>
+                <Field
+                    className='font-p text-black h-[80px] p-6 rounded-4xl'
+                    type="text"
+                    name={name}
+                    placeholder={label}
+                    inputMode="numeric"
+                    maxLength="3"
+                    value={displayValue}
+                    onChange={handleCVVChange}
+                />
+                {touched && error ? (
+                    <div className='h-10 text-red-700 py-4'>
+                        <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />
+                    </div>) : (
+                    <div className='h-10 text-red-700 py-4'></div>
+                    )
+                }
+            </div>
+        </>
+        
     )
 }
 export default CVV_Input

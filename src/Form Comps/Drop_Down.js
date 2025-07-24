@@ -65,6 +65,7 @@ const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h
     const imageSrc = selectedOption === placeholderText ? img_defualt : img_active
 
     return (
+        <>
         <div className='flex flex-col w-full' ref={dropdownRef}>
             {label && (
                 <label className='font-p text-black font-bold py-3'>
@@ -123,6 +124,7 @@ const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h
                 <div className='h-10 text-red-700 py-4'></div>
             )}
         </div>
+        </>
     );
 }
 

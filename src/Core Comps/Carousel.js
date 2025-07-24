@@ -24,19 +24,22 @@ const Carousel = ({ children }) => {
     }, [children]);
 
     return (
-        <div className="overflow-hidden" ref={constraintsRef}>
-            <motion.div
-                className="flex gap-3 cursor-grab active:cursor-grabbing"
-                style={{ x }}
-                drag='x'
-                dragConstraints={{ left: leftConstraint, right: 0 }}
-                dragElastic={0.2}
-                dragMomentum={true}
-                ref={carouselRef}
-            >
-                {children}
-            </motion.div>
-        </div>
+        <>
+            <div className="overflow-hidden" ref={constraintsRef}>
+                <motion.div
+                    className="flex gap-3 cursor-grab active:cursor-grabbing"
+                    style={{ x }}
+                    drag='x'
+                    dragConstraints={{ left: leftConstraint, right: 0 }}
+                    dragElastic={0.2}
+                    dragMomentum={true}
+                    ref={carouselRef}
+                >
+                    {children}
+                </motion.div>
+            </div>
+        </>
+        
     );
 };
 

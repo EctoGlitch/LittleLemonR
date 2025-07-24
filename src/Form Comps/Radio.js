@@ -5,6 +5,7 @@ function Radio({ label1, value1, label2, value2, name, touched, error }) {
   const { field } = useFormikContext();
 
   return (
+    <>
     <div className="w-full">
       <div id="my-radio-group" className='font-p text-black font-bold'>Seating Options: </div>
           <div role="group">
@@ -25,6 +26,7 @@ function Radio({ label1, value1, label2, value2, name, touched, error }) {
                 )
             }
     </div>
+    </>
   );
 }
 

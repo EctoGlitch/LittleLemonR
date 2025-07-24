@@ -27,31 +27,33 @@ const DateSelector = ({ label, name, touched, error }) => {
   ));
 
   return (
-    <div className='flex flex-col'>
-        <label className='font-p text-black font-bold py-3'>{ label }</label>
-        <DatePicker
-            selected={values[name] && !isNaN(new Date(values[name])) ? new Date(values[name]) : null}
-            onChange={date => {
-                setFieldValue(name, date ? date.toISOString() : '');
-                setFieldTouched(name, true);
-            }}
-            onBlur={() => setFieldTouched(name, true)}
-            dateFormat="yyyy/MM/dd"
-            name={name}
-            placeholderText="yyyy/MM/dd"
-            popperClassName="react-datepicker-popper"
-            customInput={<CustomDateInput />}
-            isClearable={true}
-            onCalendarClose={() => setFieldTouched(name, true)}
-        />
-        {touched && error ? (
-            <div className='h-10 text-red-700 py-4'>
-                <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />
-            </div>) : (
-            <div className='h-10 text-red-700 py-4'></div>
-            )
-        }
-    </div>
+    <>
+      <div className='flex flex-col'>
+          <label className='font-p text-black font-bold py-3'>{ label }</label>
+          <DatePicker
+              selected={values[name] && !isNaN(new Date(values[name])) ? new Date(values[name]) : null}
+              onChange={date => {
+                  setFieldValue(name, date ? date.toISOString() : '');
+                  setFieldTouched(name, true);
+              }}
+              onBlur={() => setFieldTouched(name, true)}
+              dateFormat="yyyy/MM/dd"
+              name={name}
+              placeholderText="yyyy/MM/dd"
+              popperClassName="react-datepicker-popper"
+              customInput={<CustomDateInput />}
+              isClearable={true}
+              onCalendarClose={() => setFieldTouched(name, true)}
+          />
+          {touched && error ? (
+              <div className='h-10 text-red-700 py-4'>
+                  <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />
+              </div>) : (
+              <div className='h-10 text-red-700 py-4'></div>
+              )
+          }
+      </div>
+    </>
   )
 }
 export default DateSelector

@@ -32,6 +32,7 @@ const Map = () => {
   }, []);
 
   return (
+    <>
     <div>
       <h1 style={{ textAlign: 'center', fontFamily: 'Karla, sans-serif' }}>Map Page</h1>
       <div
@@ -43,6 +44,8 @@ const Map = () => {
         }}
       ></div>
     </div>
+    </>
+    
   );
 };
 

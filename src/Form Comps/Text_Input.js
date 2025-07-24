@@ -42,6 +42,7 @@ const Text_Input = ({ label, type, name, touched, error }) => {
     };
 
     return (
+        <>
         <div className='w-full flex flex-col'>
             <label className='font-p text-black font-bold py-3'>{ label }</label>
             <Field
@@ -61,6 +62,7 @@ const Text_Input = ({ label, type, name, touched, error }) => {
                 )
             }
         </div>
+        </>
     )
 }
 export default Text_Input

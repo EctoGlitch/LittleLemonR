@@ -27,6 +27,7 @@ const ExpirySelector = ({ label, name, touched, error }) => {
   ));
 
   return (
+    <>
     <div className='flex flex-col'>
         <label className='font-p text-black font-bold py-3'>{ label }</label>
         <DatePicker
@@ -54,6 +55,7 @@ const ExpirySelector = ({ label, name, touched, error }) => {
             )
         }
     </div>
+    </>
   )
 }
 export default ExpirySelector

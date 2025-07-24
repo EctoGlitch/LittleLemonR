@@ -27,7 +27,8 @@ const TimeSelector = ({ label, name, touched, error }) => {
   ))
 
   return (
-    <div className='flex flex-col'>
+    <>
+      <div className='flex flex-col'>
         <label className='font-p text-black font-bold py-3'>{ label }</label>
         <DatePicker
         className='h-[80px] w-full relative text-black font-p p-6 rounded-4xl focus:outline-black focus:ring-2 focus:ring-yellow-500'
@@ -55,6 +56,7 @@ const TimeSelector = ({ label, name, touched, error }) => {
             )
         }
     </div>
+    </>
   )
 }
 export default TimeSelector
