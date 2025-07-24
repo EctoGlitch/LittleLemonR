@@ -103,12 +103,14 @@ function Header() {
               max-sm:pl-8 max-sm:h-80 bg-white w-screen flex-row max-sm:flex-col
               max-sm:absolute max-sm:top-24 max-sm:z-10`}
               >
-              {/* ${isCollasped ? "mid_navs_open" : "mid_navs_close" } */}
                 <li className='hover:font-bold active:text-black'>
                     <Link to="/">Home</Link>
                 </li>
                 <li className='hover:font-bold active:text-black'>
                     <Link to="/about">About</Link>
+                </li>
+                <li className='hover:font-bold active:text-black'>
+                    <Link to="/menu">Menu</Link>
                 </li>
                 <li className='hover:font-bold active:text-black'>
                     <Link to="/reservations">Reservations</Link>

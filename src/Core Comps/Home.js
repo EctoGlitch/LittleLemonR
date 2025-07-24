@@ -30,114 +30,119 @@ const Home = () => {
                     <img src={mobile_home_hero_img} />
                 </picture>
             </Hero>
-            <Wrapper>
-                <main>
-                    <div className="flex justify-between my-10">
-                        <h2 className="text-black font-display text-sub_title_size max-sm:text-5xl">This Weeks Specials</h2>
-                        <Link to='/menu'>
-                            <Button label='Online Menu'/>
-                        </Link>
-                    </div>
+            <div className="bg-white">
+                <Wrapper>
+                    <main>
+                        <div className="flex justify-between my-10">
+                            <h2 className="text-black font-display text-sub_title_size max-sm:text-5xl">This Weeks Specials</h2>
+                            <Link to='/menu'>
+                                <Button label='Online Menu'/>
+                            </Link>
+                        </div>
 
-                    <Carousel>
-                        <Menu_Card
-                            img={greek_salad}
-                            name='Greek Salad'
-                            price='$12.99'
-                            description='The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.'
-                            link=''
-                        />
-                        <Menu_Card
-                            img={bruschetta}
-                            name='Bruschetta'
-                            price='$5.99'
-                            description='Our bruschetta is made from grilled bread that has been smeared in garlic and seasoned with salt and olive oil.'
-                            link=''
-                        />
-                        <Menu_Card
-                            img={lemon_cake}
-                            name='Lemon Cake'
-                            price='$5.00'
-                            description='This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can  be imagined.'
-                            link=''
-                        />
-                    </Carousel>
-
-                    <div className='my-10'>
-                        <h2 className="text-black max-sm:text-5xl font-display text-sub_title_size">Testimonials</h2>
                         <Carousel>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl flex flex-col ">
-                                <span className="text-gold font-semibold text-2xl">★★★★☆</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Bruschetta</p>
-                                <img className="w-3/4" src={bruschetta}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Ashley</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>The freshest bruschetta i’ve ever had!</p>
-                            </div>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
-                                <span className="text-gold font-semibold text-2xl">★★★★★</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
-                                <img className="w-3/4" src={greek_salad}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Brandon</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>That crunch!</p>
-                            </div>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
-                                <span className="text-gold font-semibold text-2xl">★★★★★</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
-                                <img className="w-3/4" src={greek_salad}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Rebbeca</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>Freshest red onion!</p>
-                            </div>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
-                                <span className="text-gold font-semibold text-2xl">★★★★★</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Lemon Cake</p>
-                                <img className="w-3/4" src={lemon_cake}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Miranda</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>Just Wow!</p>
-                            </div>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
-                                <span className="text-gold font-semibold text-2xl">★★★★☆</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Bruschetta</p>
-                                <img className="w-3/4" src={bruschetta}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Ashley</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>The freshest bruschetta i’ve ever had!</p>
-                            </div>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
-                                <span className="text-gold font-semibold text-2xl">★★★★★</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
-                                <img className="w-3/4" src={greek_salad}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Brandon</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>That crunch!</p>
-                            </div>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
-                                <span className="text-gold font-semibold text-2xl">★★★★★</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
-                                <img className="w-3/4" src={greek_salad}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Rebbeca</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>Freshest red onion!</p>
-                            </div>
-                            <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
-                                <span className="text-gold font-semibold text-2xl">★★★★★</span>
-                                <p className='font-p font-bold text-black text-lead_text' text->Lemon Cake</p>
-                                <img className="w-3/4" src={lemon_cake}/>
-                                <p className='font-p font-semibold text-black text-lead_text' text->Miranda</p>
-                                <p className='font-p text-lead_text text-black line-clamp-2'>Just Wow!</p>
+                            <div className="grid gap-x-60 max-sm:gap-x-[500px] grid-cols-3 [&>*]:w-[440px]">
+                                <Menu_Card
+                                    img={greek_salad}
+                                    name='Greek Salad'
+                                    price='12.99'
+                                    description='The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.'
+                                    link=''
+                                />
+                                <Menu_Card
+                                    img={bruschetta}
+                                    name='Bruschetta'
+                                    price='5.99'
+                                    description='Our bruschetta is made from grilled bread that has been smeared in garlic and seasoned with salt and olive oil.'
+                                    link=''
+                                />
+                                <Menu_Card
+                                    img={lemon_cake}
+                                    name='Lemon Cake'
+                                    price='5.00'
+                                    description='This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can  be imagined.'
+                                    link=''
+                                />
                             </div>
                         </Carousel>
-                    </div>
-                    <div className="grid max-sm:grid-cols-1 grid-cols-2">
-                        <div className="[&>*]:p-2">
-                            <h2 className="text-black font-display text-sub_title_size">Little Lemon</h2>
-                            <p className='font-p font-bold text-black text-lead_text' text->Chicago</p>
-                            <p className='font-p text-lead_text text-black my-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <p className='font-p text-lead_text text-black my-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+                        <div className='my-10'>
+                            <h2 className="text-black max-sm:text-5xl font-display text-sub_title_size">Testimonials</h2>
+                            <Carousel>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl flex flex-col ">
+                                    <span className="text-gold font-semibold text-2xl">★★★★☆</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Bruschetta</p>
+                                    <img className="w-3/4" src={bruschetta}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Ashley</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>The freshest bruschetta i’ve ever had!</p>
+                                </div>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
+                                    <span className="text-gold font-semibold text-2xl">★★★★★</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
+                                    <img className="w-3/4" src={greek_salad}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Brandon</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>That crunch!</p>
+                                </div>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
+                                    <span className="text-gold font-semibold text-2xl">★★★★★</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
+                                    <img className="w-3/4" src={greek_salad}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Rebbeca</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>Freshest red onion!</p>
+                                </div>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
+                                    <span className="text-gold font-semibold text-2xl">★★★★★</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Lemon Cake</p>
+                                    <img className="w-3/4" src={lemon_cake}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Miranda</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>Just Wow!</p>
+                                </div>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
+                                    <span className="text-gold font-semibold text-2xl">★★★★☆</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Bruschetta</p>
+                                    <img className="w-3/4" src={bruschetta}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Ashley</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>The freshest bruschetta i’ve ever had!</p>
+                                </div>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
+                                    <span className="text-gold font-semibold text-2xl">★★★★★</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
+                                    <img className="w-3/4" src={greek_salad}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Brandon</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>That crunch!</p>
+                                </div>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
+                                    <span className="text-gold font-semibold text-2xl">★★★★★</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Greek Salad</p>
+                                    <img className="w-3/4" src={greek_salad}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Rebbeca</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>Freshest red onion!</p>
+                                </div>
+                                <div className="h-80 min-w-64 [&>*]:p-2 bg-grey rounded-4xl">
+                                    <span className="text-gold font-semibold text-2xl">★★★★★</span>
+                                    <p className='font-p font-bold text-black text-lead_text' text->Lemon Cake</p>
+                                    <img className="w-3/4" src={lemon_cake}/>
+                                    <p className='font-p font-semibold text-black text-lead_text' text->Miranda</p>
+                                    <p className='font-p text-lead_text text-black line-clamp-2'>Just Wow!</p>
+                                </div>
+                            </Carousel>
                         </div>
-                        <div className="relative max-sm:static [&>*]:my-10">
-                            <img className="w-72 max-sm:static absolute left-10 top-52 rounded-4xl" src={Mario}></img>
-                            <img className="w-72 max-sm:static absolute left-1/2 top-20 rounded-4xl" src={Adrian}></img>
+                        <div className="grid max-sm:grid-cols-1 grid-cols-2">
+                            <div className="[&>*]:p-2">
+                                <h2 className="text-black font-display text-sub_title_size">Little Lemon</h2>
+                                <p className='font-p font-bold text-black text-lead_text' text->Chicago</p>
+                                <p className='font-p text-lead_text text-black my-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                <p className='font-p text-lead_text text-black my-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            </div>
+                            <div className="relative max-sm:static [&>*]:my-10">
+                                <img className="w-72 max-sm:static absolute left-10 top-52 rounded-4xl" src={Mario}></img>
+                                <img className="w-72 max-sm:static absolute left-1/2 top-20 rounded-4xl" src={Adrian}></img>
+                            </div>
                         </div>
-                    </div>
-                </main>
-            </Wrapper>
+                    </main>
+                </Wrapper>
+            </div>
+            
         </>
     )
 }

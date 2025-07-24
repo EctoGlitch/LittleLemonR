@@ -10,8 +10,10 @@ import Home from './Core Comps/Home'
 import About from './Core Comps/About';
 import Menu from './Core Comps/Menu';
 import Reservations from './Core Comps/Reservations';
+import Billing from './Core Comps/Billing'
 import Order_Online from './Core Comps/Order_Online';
 import Login from './Core Comps/Login';
+import Register from './Core Comps/Register';
 import Cart from './Core Comps/Cart';
 import Not_Found from './Core Comps/Not_Found';
 
@@ -38,12 +40,20 @@ const router = createBrowserRouter([
         element: <Reservations/>
       },
       {
+        path: '/billing',
+        element: <Billing/>
+      },
+      {
         path: '/order-online',
         element: <Order_Online/>
       },
       {
         path: '/login',
         element: <Login/>
+      },
+      {
+        path: '/register',
+        element: <Register/>
       },
       {
         path: '/cart',

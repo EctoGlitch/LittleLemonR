@@ -8,9 +8,126 @@
     scrollbar-width: none;
 }
 
+.error {
+    color: #c90a0a;
+}
 
+.react-datepicker-popper {
+  margin-top: 0px;
+  width: 200px;
+  color: #495e57;
+  background-color: #495e57;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 16px !important;
+  font-family: "karla", sans-serif;
+}
+
+.time-picker-popper {
+  width: 200px !important; /* Adjust this value as needed */
+}
+
+.react-datepicker__time {
+  width: 200px;
+}
+
+.react-datepicker__time-box {
+  width: 200px;
+  text-align: left;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: 200px;
+}
+
+.react-datepicker__time-box {
+  width: 100px;
+}
+
+.react-datepicker__time-list{
+  width: 100px;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    display: block;
+    width: 100%;
+}
+
+/* .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+  width: 200px !important;
+} */
+
+
+.react-datepicker__month-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.react-datepicker__time-container {
+  width: 100% !important;
+  padding: 0px;
+}
+
+.react-datepicker__time-container  {
+  width: 160px;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: 160px !important;
+  overflow-x: auto;
+}
+
+.react-datepicker-time__header {
+  color:#edefee !important;
+}
+
+.centered-popper {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+.wide-popper {
+  width: 440px;
+  max-width: none;
+}
+
+.react-datepicker__header > * {
+    margin: 0;
+    padding: 5px;
+    background: #495e57;
+    color: #edefee;
+}
+
+h2.react-datepicker__current-month {
+    padding: 5px;
+    color: #edefee;
+}
+
+div.react-datepicker__day-name {
+    padding: 5px;
+    color: #edefee;
+}
+
+.wide-popper .react-datepicker {
+  width: 100%;
+}
+
+.wide-popper .react-datepicker__month-container {
+  width: 100%;
+}
+
+.react-datepicker__header, .react-datepicker-year-header {
+  background-color: #495e57 !important;
+  color: #edefee !important;
+}
 
 body {
     background-color: #0d1117;
     color: antiquewhite;
+}
+
+#date{
+  width: 100% !important;
 }
