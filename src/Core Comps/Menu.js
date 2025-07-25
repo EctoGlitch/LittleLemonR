@@ -75,9 +75,9 @@ const Menu = () => {
                         {searchTerm && (
                             <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="search_filter">
                                 {filteredMenuItems.length > 0 ? (
-                                    filteredMenuItems.map(item => (
+                                    filteredMenuItems.map((item, index) => (
                                         <Menu_Card
-                                            key={item.name}
+                                            key={index}
                                             img={item.img_src}
                                             name={item.name}
                                             price={item.price}
@@ -99,6 +99,7 @@ const Menu = () => {
                             <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="mains">
                             { menu_mains.map(item => (
                                 <Menu_Card
+                                    key={item.name}
                                     img={item.img_src}
                                     name={item.name}
                                     price={item.price}
@@ -112,6 +113,7 @@ const Menu = () => {
                             <div className="grid grid-cols-2 gap-8 max-sm:grid-cols-1 mx-5" id="breakfast">
                             { menu_breakfast.map(item => (
                                 <Menu_Card
+                                key={item.name}
                                     img={item.img_src}
                                     name={item.name}
                                     price={item.price}
@@ -126,6 +128,7 @@ const Menu = () => {
                             <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="lunch">
                             { menu_lunch.map(item => (
                                 <Menu_Card
+                                key={item.name}
                                     img={item.img_src}
                                     name={item.name}
                                     price={item.price}
@@ -140,6 +143,7 @@ const Menu = () => {
                             <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
                             { menu_dinner.map(item => (
                                 <Menu_Card
+                                key={item.name}
                                     img={item.img_src}
                                     name={item.name}
                                     price={item.price}
@@ -154,6 +158,7 @@ const Menu = () => {
                             <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
                             { menu_dessert.map(item => (
                                 <Menu_Card
+                                key={item.name}
                                     img={item.img_src}
                                     name={item.name}
                                     price={item.price}
@@ -168,6 +173,7 @@ const Menu = () => {
                             <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
                                 { menu_non_alcoholic.map(item => (
                                     <Menu_Card
+                                    key={item.name}
                                         img={item.img_src}
                                         name={item.name}
                                         price={item.price}
@@ -182,6 +188,7 @@ const Menu = () => {
                             <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
                                 { menu_alcoholic.map(item => (
                                     <Menu_Card
+                                    key={item.name}
                                         img={item.img_src}
                                         name={item.name}
                                         price={item.price}

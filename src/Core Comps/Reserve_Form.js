@@ -2,13 +2,15 @@ import Button from '../Form Comps/Button'
 import Button_full from '../Form Comps/Button_full'
 import Text_Input from '../Form Comps/Text_Input'
 import Drop_Down from '../Form Comps/Drop_Down'
+
+import { occasions, num_of_diners } from './Drop_Down_Context'
+
 import DateSelector from '../Form Comps/Date'
 import TimeSelector from '../Form Comps/Time'
 import Radio from '../Form Comps/Radio'
 
 import { Link } from 'react-router-dom'
 
-import React, { useState } from 'react'
 import Wrapper from './Wrapper'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
@@ -20,7 +22,7 @@ import green_group from '../Img/icons_assets/group_green.png'
 import white_group from '../Img/icons_assets/group_white.png'
 
 const Reservations = ({ onContinueToBilling, initialValues }) => {
-    const defaultInitialValues = { user_name: '', email: '', phone: '', date: '', time: '', num_of_diners: '', seating: '' };
+    const defaultInitialValues = { user_name: '', email: '', phone: '', date: '', time: '', num_of_diners: '', occasion: '', seating: '' };
     const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues;
 
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -31,6 +33,7 @@ const Reservations = ({ onContinueToBilling, initialValues }) => {
         phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').min(10, 'Phone number not long enough.'),
         date: Yup.string().required('Must enter a date'),
         time: Yup.string().required('Must enter a time slot'),
+        occasion: Yup.string(),
         num_of_diners: Yup.string().required('Must indicate number of guests.'),
         seating: Yup.string().required('Must pick seating options.')
     })
@@ -40,19 +43,6 @@ const Reservations = ({ onContinueToBilling, initialValues }) => {
         onContinueToBilling(values);
     }
 
-    //dropdowns
-    const num_of_dinners = [
-        { value: 1, label: '1' },
-        { value: 2, label: '2' },
-        { value: 3, label: '3' },
-        { value: 4, label: '4' },
-        { value: 5, label: '5' },
-        { value: 6, label: '6' },
-        { value: 7, label: '7' },
-        { value: 8, label: '8' },
-        { value: 9, label: '9' },
-        { value: 10, label: '10' },
-    ]
 
     return (
         <>
@@ -111,7 +101,7 @@ const Reservations = ({ onContinueToBilling, initialValues }) => {
                                             img_active={white_group}
                                             img_w='min-w-[20px]'
                                             img_h='min-h-[14px]'
-                                            options= {num_of_dinners}
+                                            options= {num_of_diners}
                                             touched={touched.num_of_diners}
                                             error={errors.num_of_diners}
                                         />
@@ -123,9 +113,9 @@ const Reservations = ({ onContinueToBilling, initialValues }) => {
                                             img_active={glasses_white}
                                             img_w='min-w-40px'
                                             img_h='min-h-27px'
-                                            options= {num_of_dinners}
-                                            touched={touched.num_of_diners}
-                                            error={errors.num_of_diners}
+                                            options= {occasions}
+                                            touched={touched.occasion}
+                                            error={errors.occasion}
                                         />
                                     </div>
                                     <Radio
