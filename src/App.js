@@ -2,15 +2,17 @@ import logo from './Img/icons_assets/LogoM.svg'
 import './App.css'
 import './Core Comps/Animation.css'
 import Header from './Core Comps/Header'
-import { Outlet } from 'react-router-dom'
-import Footer from './Core Comps/Footer'
-import { Helmet } from "react-helmet"
-import { CartProvider } from './Core Comps/cart_context'
+import { Outlet } from 'react-router-dom';
+import Footer from './Core Comps/Footer';
+import { Helmet } from "react-helmet";
+import { CartProvider, useCart } from './Core Comps/cart_context';
+import Add_To_Cart_Alert from './Alert Comps/Add_To_Cart';
 
-function App() {
+function AppContent() {
+  const { alertMessage, alertType } = useCart();
   return (
-    <CartProvider>
-        <Helmet>
+    <>
+      <Helmet>
           <title>Little Lemon</title>
           <meta name="description" content=" This is the Little Lemon Resturant" />
           <meta name="keywords" content="React, Mediterranean, Helmet, SEO, Meta Tags" />
@@ -24,8 +26,17 @@ function App() {
         <Outlet/>
         <Footer/>
       </main>
+      <Add_To_Cart_Alert message={alertMessage} type={alertType} />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <CartProvider>
+      <AppContent />
     </CartProvider>
   );
 }
 
-export default App
+export default App;

@@ -83,6 +83,8 @@ const Menu = () => {
                                             price={item.price}
                                             description={item.description}
                                             alt={item.name}
+                                            img_src={item.img_src}
+                                            url={item.url}
                                         />
                                     ))
                                 ) : (
@@ -105,6 +107,8 @@ const Menu = () => {
                                     price={item.price}
                                     description={item.description}
                                     alt={item.name}
+                                    img_src={item.img_src}
+                                    url={item.url}
                                 />
                             )) }
                         </div>
@@ -119,6 +123,8 @@ const Menu = () => {
                                     price={item.price}
                                     description={item.description}
                                     alt={item.name}
+                                    img_src={item.img_src}
+                                    url={item.url}
                                 />
                             )) }
                             </div>
@@ -134,6 +140,8 @@ const Menu = () => {
                                     price={item.price}
                                     description={item.description}
                                     alt={item.name}
+                                    img_src={item.img_src}
+                                    url={item.url}
                                 />
                             )) }
                             </div>
@@ -149,6 +157,8 @@ const Menu = () => {
                                     price={item.price}
                                     description={item.description}
                                     alt={item.name}
+                                    img_src={item.img_src}
+                                    url={item.url}
                                 />
                             )) }
                             </div>
@@ -164,6 +174,8 @@ const Menu = () => {
                                     price={item.price}
                                     description={item.description}
                                     alt={item.name}
+                                    img_src={item.img_src}
+                                    url={item.url}
                                 />
                             )) }
                             </div>
@@ -179,6 +191,8 @@ const Menu = () => {
                                         price={item.price}
                                         description={item.description}
                                         alt={item.name}
+                                        img_src={item.img_src}
+                                        url={item.url}
                                     />
                                 )) }
                             </div>
@@ -194,6 +208,8 @@ const Menu = () => {
                                         price={item.price}
                                         description={item.description}
                                         alt={item.name}
+                                        img_src={item.img_src}
+                                        url={item.url}
                                     />
                                 )) }
                             </div>

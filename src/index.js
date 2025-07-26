@@ -16,6 +16,7 @@ import Login from './Core Comps/Login';
 import Register from './Core Comps/Register';
 import Cart from './Core Comps/Cart';
 import Not_Found from './Core Comps/Not_Found';
+import Menu_Item_Detail from './Core Comps/Menu_Item_Detail';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: <Menu/>
       },
       {
+        path: '/menu/:itemName',
+        element: <Menu_Item_Detail/>
+      },
+      {
         path: '/reservations',
         element: <Reservations/>
       },
@@ -48,6 +53,10 @@ const router = createBrowserRouter([
         element: <Order_Online/>
       },
       {
+        path: '/order-online/:itemName',
+        element: <Menu_Item_Detail/>
+      },
+      {
         path: '/login',
         element: <Login/>
       },
@@ -58,7 +67,11 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart/>
-      }
+      },
+      // {
+      //   path: '/cart/:itemName',
+      //   element: <Menu_Item_Detail/>
+      // },
     ]
   }
 ]);

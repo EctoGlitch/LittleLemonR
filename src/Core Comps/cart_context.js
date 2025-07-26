@@ -9,9 +9,12 @@ export const CartProvider = ({ children }) => {
             return storedItems ? JSON.parse(storedItems) : []
         } catch (error) {
             console.error("Error parsing stored items from local storage:", error)
-            return [];
+            return []
         }
-    });
+    })
+
+    const [alertMessage, setAlertMessage] = useState('')
+    const [alertType, setAlertType] = useState('')
 
     useEffect(() => {
         try {
@@ -22,21 +25,48 @@ export const CartProvider = ({ children }) => {
         }
     }, [items])
 
-    const addItem = (newItem) => {
+    const triggerAlert = (message, type) => {
+        setAlertMessage(message)
+        setAlertType(type)
+        setTimeout(() => {
+            setAlertMessage('')
+            setAlertType('')
+        }, 6000)
+    }
+
+    const addItem = (itemsToAdd) => {
         setItems(prevItems => {
-            const updatedItems = [...prevItems, newItem]
-            console.log('Item added to cart state:', newItem, 'Updated cart items:', updatedItems)
+            let updatedItems = [...prevItems]
+            const itemsArray = Array.isArray(itemsToAdd) ? itemsToAdd : [itemsToAdd]
+            itemsArray.forEach(item => {
+                updatedItems.push(item)
+            })
+            console.log('New item(s) added to cart state:', itemsArray, 'Updated cart items:', updatedItems)
+            if (itemsArray.length > 0) {
+                triggerAlert(`${itemsArray[0].name} added to cart!`, 'success')
+            } else {
+                triggerAlert('No items added to cart!', 'info')
+            }
             return updatedItems
-        });
-    };
+        })
+    }
+
+    const removeItem = (indexToRemove) => {
+        setItems(prevItems => {
+            const updatedItems = prevItems.filter((_, index) => index !== indexToRemove)
+            console.log('Item removed from cart state. Updated cart items:', updatedItems)
+            triggerAlert('Item removed from cart!', 'info')
+            return updatedItems
+        })
+    }
 
     return (
-        <CartContext.Provider value={{ items, addItem }}>
+        <CartContext.Provider value={{ items, setItems, addItem, removeItem, alertMessage, alertType }}>
             {children}
         </CartContext.Provider>
-    );
-};
+    )
+}
 
 export const useCart = () => {
-    return useContext(CartContext);
-};
+    return useContext(CartContext)
+}

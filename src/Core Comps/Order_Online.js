@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Hero from "./Heading_Section"
 import { Standalone_Drop_Down } from "../Form Comps/Drop_Down"
 import { countries } from "./Drop_Down_Context"
@@ -7,7 +7,7 @@ import Wrapper from './Wrapper'
 import Carousel from "./Carousel"
 import Order_Card from "./Order_Card"
 import * as menu from './menu_context'
-import Search from '../Form Comps/Search';
+import Search from '../Form Comps/Search'
 
 import order_hero_img from '../Img/icons_assets/order_hero.png'
 import globe_green from '../Img/icons_assets/globe_green.png'
@@ -18,10 +18,10 @@ import dinner from '../Img/icons_assets/order-kabob.png'
 import dessert from '../Img/icons_assets/order-dessert.png'
 
 const Order_Online = () => {
-    const [selectedValue, setSelectedValue] = useState('');
+    const [selectedValue, setSelectedValue] = useState('')
 
     const handleDropdownChange = (value) => {
-        setSelectedValue(value);
+        setSelectedValue(value)
     }
 
 
@@ -39,7 +39,7 @@ const Order_Online = () => {
                 item.name.toLowerCase().includes(lowerCaseSearchTerm) ||
                 item.category.toLowerCase().includes(lowerCaseSearchTerm) ||
                 item.description.toLowerCase().includes(lowerCaseSearchTerm)
-            );
+            )
         }, [searchTerm])
 
         const sortMenu = (category)  => {
@@ -51,26 +51,26 @@ const Order_Online = () => {
         const len_search = filteredMenuItems.length
 
 
-        const menu_mains = sortMenu('Mains').filtered;
-        const len_mains = sortMenu('Mains').filteredLength;
+        const menu_mains = sortMenu('Mains').filtered
+        const len_mains = sortMenu('Mains').filteredLength
 
         const menu_breakfast = sortMenu('Breakfast').filtered
-        const len_breakfast = sortMenu('Breakfast').filteredLength;
+        const len_breakfast = sortMenu('Breakfast').filteredLength
 
         const menu_lunch = sortMenu('Lunch').filtered
-        const len_lunch = sortMenu('Lunch').filteredLength;
+        const len_lunch = sortMenu('Lunch').filteredLength
 
         const menu_dinner = sortMenu('Dinner').filtered
-        const len_dinner = sortMenu('Dinner').filteredLength;
+        const len_dinner = sortMenu('Dinner').filteredLength
 
         const menu_dessert = sortMenu('Dessert').filtered
-        const len_dessert = sortMenu('Dessert').filteredLength;
+        const len_dessert = sortMenu('Dessert').filteredLength
 
         const menu_non_alcoholic = sortMenu('Non_Alcoholic_Drinks').filtered
-        const len_non_alcoholic = sortMenu('Non_Alcoholic_Drinks').filteredLength;
+        const len_non_alcoholic = sortMenu('Non_Alcoholic_Drinks').filteredLength
 
         const menu_alcoholic = sortMenu('Alcoholic_Drinks').filtered
-        const len_alcoholic = sortMenu('Alcoholic_Drinks').filteredLength;
+        const len_alcoholic = sortMenu('Alcoholic_Drinks').filteredLength
 
     return (
         <>
@@ -120,6 +120,8 @@ const Order_Online = () => {
                                                     price={item.price}
                                                     description={item.description}
                                                     alt={item.name}
+                                                    img_src={item.img_src}
+                                                    url={item.url}
                                                 />
                                             ))
                                         ) : (
@@ -147,6 +149,8 @@ const Order_Online = () => {
                                                 price={item.price}
                                                 description={item.description}
                                                 alt={item.name}
+                                                img_src={item.img_src}
+                                                url={item.url}
                                             />
                                         )) }
                             </div>
@@ -165,6 +169,8 @@ const Order_Online = () => {
                                             price={item.price}
                                             description={item.description}
                                             alt={item.name}
+                                            img_src={item.img_src}
+                                            url={item.url}
                                         />
                                     )) }
                             </div>
@@ -183,6 +189,8 @@ const Order_Online = () => {
                                             price={item.price}
                                             description={item.description}
                                             alt={item.name}
+                                            img_src={item.img_src}
+                                            url={item.url}
                                         />
                                     )) }
                             </div>
@@ -201,6 +209,8 @@ const Order_Online = () => {
                                             price={item.price}
                                             description={item.description}
                                             alt={item.name}
+                                            img_src={item.img_src}
+                                            url={item.url}
                                         />
                                     )) }
                             </div>
@@ -219,6 +229,8 @@ const Order_Online = () => {
                                             price={item.price}
                                             description={item.description}
                                             alt={item.name}
+                                            img_src={item.img_src}
+                                            url={item.url}
                                         />
                                     )) }
                             </div>
@@ -237,6 +249,8 @@ const Order_Online = () => {
                                             price={item.price}
                                             description={item.description}
                                             alt={item.name}
+                                            img_src={item.img_src}
+                                            url={item.url}
                                         />
                                     )) }
                             </div>
@@ -255,6 +269,8 @@ const Order_Online = () => {
                                             price={item.price}
                                             description={item.description}
                                             alt={item.name}
+                                            img_src={item.img_src}
+                                            url={item.url}
                                         />
                                     )) }
                             </div>
