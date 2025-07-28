@@ -6,7 +6,7 @@ const Order_Card = ({ img, name, price, description, url}) => {
 
     return (
         <>
-            <div className={'relative bg-grey max-w-[440px] w-full max-h-[460px] max-sm:max-h-[500px] rounded-4xl'}>
+            <div className={'relative bg-grey max-w-[440px] max-sm:w-[330px]  w-full max-h-[460px] max-sm:max-h-[500px] rounded-4xl'}>
                 <Order_Button label='+' name={name} price={price}/>
                 <Link to={`/order-online/${url}`}><img className='rounded-t-4xl h-[192px] w-full object-cover' src={img} alt={name}/></Link>
                 <div className='py-8 mx-8 max-sm:py-2 max-sm:mx-4'>

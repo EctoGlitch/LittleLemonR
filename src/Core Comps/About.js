@@ -32,7 +32,7 @@ const About = () => {
                 <Wrapper>
                     <div>
                         <h2 className="text-black font-display text-sub_title_size max-sm:text-5xl">Two Brothers</h2>
-                        <div className="grid grid-cols-2 gap-20">
+                        <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-20">
                             <div>
                                 <img className="w-full rounded-4xl" src={ Adrian } />
                                 <div className="[&>*]:py-2 my-16">
@@ -43,7 +43,7 @@ const About = () => {
 
                                 </div>
                             </div>
-                            <div>
+                            <div className="max-sm:flex max-sm:flex-col-reverse">
                                 <div className="[&>*]:py-2">
                                     <p className='font-p font-bold text-black text-lead_text'>MARIO</p>
                                     <p className='font-p font-semibold text-black text-lead_text'>Role</p>

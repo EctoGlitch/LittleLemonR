@@ -43,7 +43,7 @@ const Menu = () => {
     return (
         <>
             <Hero className='mx-auto'>
-                <div className="w-hero-width h-[780px] mx-auto [&>*]:my-5">
+                <div className="w-hero-width h-[780px] max-sm:h-[35rem]  mx-auto [&>*]:my-5">
                     <h1 className="text-gold font-display text-display_size max-sm:text-6xl text-7xl -mt-7">Join Our Loyalty Program & Earn Exclusive Rewards!</h1>
                     <h2 className="text-white font-display text-4xl max-sm:text-5xl max-sm:m-0 mt-3 mb-7">Chicago</h2>
                     <ul className="list-disc mb-6">
@@ -53,7 +53,7 @@ const Menu = () => {
                     </ul>
                     <Link to='/register'><Button className='hover:bg-white hover:text-black' label={'Register Now'}/></Link>
                 </div>
-                <picture className="w-full h-[780px] mx-auto">
+                <picture className="w-full h-[780px] max-sm:h-[25rem] mx-auto">
                     <source className="h-[620px]" media='(min-width:600px)' srcSet={hero_menu_full}/>
                     <source media='(max-width:599px)' srcSet={hero_image_small}/>
                     <img className="rounded-4xl" src={hero_image_small} />
@@ -68,12 +68,12 @@ const Menu = () => {
                         />
                     </div>
                     <div className="bg-dark_green">
-                        <h2 className="text-gol mx-8 my-5 py-10 max-sm:text-5xl font-display text-sub_title_size">Menu</h2>
+                        <h2 className="text-gol mx-8 my-5 py-10 max-sm:text-5xl text-gold font-display text-sub_title_size">Menu</h2>
                     </div>
                     <div id='menu'>
                         {/* -------------------------------------------Search Results-------------------------------------- */}
                         {searchTerm && (
-                            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="search_filter">
+                            <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-1 gap-8 max-sm:2 mx-5" id="search_filter">
                                 {filteredMenuItems.length > 0 ? (
                                     filteredMenuItems.map((item, index) => (
                                         <Menu_Card
@@ -98,7 +98,7 @@ const Menu = () => {
                             <>
                                 <div className="mains">
                             <p className="text-black font-p font-black my-5 uppercase">Mains</p>
-                            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="mains">
+                            <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-1 gap-8 mx-5" id="mains">
                             { menu_mains.map(item => (
                                 <Menu_Card
                                     key={item.name}
@@ -114,7 +114,7 @@ const Menu = () => {
                         </div>
                         <div className="breakfast">
                             <p className="text-black font-p font-black my-10 uppercase">Breakfast</p>
-                            <div className="grid grid-cols-2 gap-8 max-sm:grid-cols-1 mx-5" id="breakfast">
+                            <div className="grid grid-cols-2 gap-8 max-sm:gap-1 max-sm:grid-cols-1 mx-5" id="breakfast">
                             { menu_breakfast.map(item => (
                                 <Menu_Card
                                 key={item.name}
@@ -131,7 +131,7 @@ const Menu = () => {
                         </div>
                         <div className="lunch">
                             <p className="text-black font-p font-black my-10 uppercase">Lunch</p>
-                            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="lunch">
+                            <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-1 gap-8 mx-5" id="lunch">
                             { menu_lunch.map(item => (
                                 <Menu_Card
                                 key={item.name}
@@ -148,7 +148,7 @@ const Menu = () => {
                         </div>
                         <div className="dinner">
                             <p className="text-black font-p font-black my-10 uppercase">Dinner</p>
-                            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
+                            <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-1 gap-8 mx-5" id="dinner">
                             { menu_dinner.map(item => (
                                 <Menu_Card
                                 key={item.name}
@@ -165,7 +165,7 @@ const Menu = () => {
                         </div>
                         <div className="dessert">
                             <p className="text-black font-p font-black my-10 uppercase">Dessert</p>
-                            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
+                            <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-1 gap-8 mx-5" id="dinner">
                             { menu_dessert.map(item => (
                                 <Menu_Card
                                 key={item.name}
@@ -182,7 +182,7 @@ const Menu = () => {
                         </div>
                         <div className="non_alcoholic">
                             <p className="text-black font-p font-black my-10 uppercase">Non Alcoholic Drinks</p>
-                            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
+                            <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-1 gap-8 mx-5" id="dinner">
                                 { menu_non_alcoholic.map(item => (
                                     <Menu_Card
                                     key={item.name}
@@ -199,7 +199,7 @@ const Menu = () => {
                         </div>
                         <div className="alcoholic">
                             <p className="text-black font-p font-black my-10 uppercase">Alcoholic Drinks</p>
-                            <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 mx-5" id="dinner">
+                            <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:gap-1 gap-8 mx-5" id="dinner">
                                 { menu_alcoholic.map(item => (
                                     <Menu_Card
                                     key={item.name}
@@ -220,7 +220,6 @@ const Menu = () => {
                 </div>
             </Wrapper>
             </div>
-            
         </>
     )
 }

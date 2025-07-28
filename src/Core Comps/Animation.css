@@ -119,11 +119,11 @@
 
 @keyframes collapse {
   from {left: 0px;}
-  to {left: -400px;}
+  to {left: -500px;}
 }
 
 @keyframes collapse_reverse {
-  from {left: -400px;}
+  from {left: -500px;}
   to {left: 0px;}
 }
 
