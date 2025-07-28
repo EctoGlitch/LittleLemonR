@@ -1,5 +1,5 @@
 import Wrapper from "./Wrapper"
-import Button from '../Form Comps/Button' // Import Button component
+import Button from '../Form Comps/Button'
 
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
@@ -17,7 +17,7 @@ import { states, countries } from "./Drop_Down_Context"
 import globe_green from '../Img/icons_assets/globe_green.png'
 import globe_white from '../Img/icons_assets/globe_white.png'
 
-const Billing = ({ onGoBackToReservation, initialValues, onFinalSubmit, reservationFormValid }) => {
+const Billing = ({ onGoBackToReservation, initialValues, onFinalSubmit, reservationFormValid, backButtonLabel = 'Review Cart' }) => {
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
     const defaultInitialValues = { bill_name: '', bill_email: '', bill_phone: '', card: '', expiration: '', cvv: '', address: '', zip_code: '', country: '', state: '', confirmation: '' };
     const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues;
@@ -59,7 +59,7 @@ const Billing = ({ onGoBackToReservation, initialValues, onFinalSubmit, reservat
                 >
                     {({ errors, touched, values, isValid }) => (
                         <Form>
-                            <Button className='min-w-full' label='Go Back to Reservation' onClick={() => onGoBackToReservation(values)}>Go Back</Button>
+<Button className='min-w-full' label={backButtonLabel} onClick={() => onGoBackToReservation(values)}>{backButtonLabel}</Button>
                             <Text_Input
                                 label={'Name of Card Holder'}
                                 type={'text'}

@@ -1,22 +1,42 @@
 import React from 'react'
 import { useCart } from '../Core Comps/cart_context'
 
-const Detail_Order_Button = ({ label, orderItem, onOrderAdded }) => {
+const Detail_Order_Button = ({ label, orderItem, onOrderAdded, setQuantityAlertMessage, setQuantityAlertType }) => {
     const { addItem } = useCart()
 
-    const addToLocalStorage = () => {
-        console.log('Detail_Order_Button props - orderItem:', orderItem)
-        const { quantity, ...baseItem } = orderItem
-        const itemsToAdd = []
-        for (let i = 0; i < quantity; i++) {
-            const itemCopy = JSON.parse(JSON.stringify(baseItem))
-            itemsToAdd.push(itemCopy)
-        }
-        addItem(itemsToAdd)
-        if (onOrderAdded) {
-            onOrderAdded()
-        }
+const addToLocalStorage = (event) => {
+    event.preventDefault()
+
+    const itemsToAdd = []
+
+
+    for (let i = 0; i < orderItem.quantity; i++) {
+        itemsToAdd.push({
+            name: orderItem.name,
+            price: orderItem.price,
+            extras: orderItem.extras.map(extra => ({
+                name: extra.name,
+                price: extra.price
+            }))
+        })
     }
+
+    const pendingItems = JSON.parse(localStorage.getItem('pendingItems')) || []
+    pendingItems.push(...itemsToAdd)
+    localStorage.setItem('pendingItems', JSON.stringify(pendingItems))
+
+    setQuantityAlertMessage(`${orderItem.name} added to pending items`)
+    setQuantityAlertType('success')
+
+    setTimeout(() => {
+        setQuantityAlertMessage('')
+        setQuantityAlertType('')
+    }, 5000)
+
+    if (onOrderAdded) {
+        onOrderAdded()
+    }
+}
     return (
         <>
             <button type='submit' onClick={addToLocalStorage} className=" bg-gold rounded-4xl text-black font-p h-desktop_btn px-11 drop-shadow-md

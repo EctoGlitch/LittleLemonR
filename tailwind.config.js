@@ -10,21 +10,21 @@ module.exports = {
       lg: '976px',
       xl: '1440px',
     },
-    colors: {
-      'white' : '#edefee',
-      'dark_green' : '#495e57',
-      'gold' : '#f4ce14',
-      'light_orange' : '#ee9972',
-      'pale_orange': '#fbdabb',
-      'black' : '#333333',
-      'grey' : '#d9d9d9',
-      'light_green': '#48742c'
-    },
-    fontFamily: {
-      'display': ["Markazi Text", 'serif'],
-      'p': ['karla', 'san-serif']
-    },
     extend: {
+      colors: {
+        'white' : '#edefee',
+        'dark_green' : '#495e57',
+        'gold' : '#f4ce14',
+        'light_orange' : '#ee9972',
+        'pale_orange': '#fbdabb',
+        'black' : '#333333',
+        'grey' : '#d9d9d9',
+        'light_green': '#48742c'
+      },
+      fontFamily: {
+        'display': ["Markazi Text", 'serif'],
+        'p': ['karla', 'san-serif']
+      },
       gridTemplateColumns: {
         'footer': 'repeat(4, minmax(0, 25%))',
       },
@@ -53,4 +53,3 @@ module.exports = {
   },
   plugins: [],
 }
-

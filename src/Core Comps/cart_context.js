@@ -34,22 +34,24 @@ export const CartProvider = ({ children }) => {
         }, 6000)
     }
 
-    const addItem = (itemsToAdd) => {
-        setItems(prevItems => {
-            let updatedItems = [...prevItems]
-            const itemsArray = Array.isArray(itemsToAdd) ? itemsToAdd : [itemsToAdd]
-            itemsArray.forEach(item => {
+const addItem = (itemsToAdd) => {
+    setItems(prevItems => {
+        let updatedItems = [...prevItems]
+        const itemsArray = Array.isArray(itemsToAdd) ? itemsToAdd : [itemsToAdd]
+        itemsArray.forEach(item => {
+            if (item && item.name) {
                 updatedItems.push(item)
-            })
-            console.log('New item(s) added to cart state:', itemsArray, 'Updated cart items:', updatedItems)
-            if (itemsArray.length > 0) {
-                triggerAlert(`${itemsArray[0].name} added to cart!`, 'success')
-            } else {
-                triggerAlert('No items added to cart!', 'info')
             }
-            return updatedItems
         })
-    }
+        console.log('New item(s) added to cart state:', itemsArray, 'Updated cart items:', updatedItems)
+        if (itemsArray.length > 0 && itemsArray[0] && itemsArray[0].name) {
+            triggerAlert(`${itemsArray[0].name} added to cart!`, 'success')
+        } else {
+            triggerAlert('No items added to cart!', 'info')
+        }
+        return updatedItems
+    })
+}
 
     const removeItem = (indexToRemove) => {
         setItems(prevItems => {
@@ -60,8 +62,14 @@ export const CartProvider = ({ children }) => {
         })
     }
 
+    const clearCart = () => {
+        setItems([])
+        localStorage.removeItem('cartItemArray')
+        triggerAlert('Cart cleared!', 'info')
+    }
+
     return (
-        <CartContext.Provider value={{ items, setItems, addItem, removeItem, alertMessage, alertType }}>
+        <CartContext.Provider value={{ items, setItems, addItem, removeItem, clearCart, alertMessage, alertType }}>
             {children}
         </CartContext.Provider>
     )
