@@ -10,6 +10,7 @@ import Alert from '../Alert Comps/Alert'
 import ClearCartButton from '../Form Comps/Clear_Cart_Button'
 import RemoveItemButton from '../Form Comps/Remove_Item_Button'
 import { useCart } from './cart_context'
+import Button from '../Form Comps/Button'
 
 const Menu_Item_Detail = () => {
   const { itemName } = useParams()
@@ -105,6 +106,11 @@ const Menu_Item_Detail = () => {
     <>
       <div className='bg-white'>
         <Wrapper>
+          <Button
+            onClick={() => navigate('/order-online')}
+            label='Return to Order Online'
+            aria-label="Return to Order Online page"
+          />
           <h1 className="font-display text-black font-semibold text-[48pt] py-5" aria-label={`${menuItem.category}: ${menuItem.name}`}>{menuItem.category}: {menuItem.name}</h1>
           <div className="grid grid-cols-2 max-sm:grid-cols-1 items-stretch">
             <div className="flex-grow">
