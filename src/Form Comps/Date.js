@@ -43,6 +43,7 @@ const DateSelector = ({ label, name, touched, error, dispatch, 'aria-label': ari
                   setFieldValue(name, date ? date.toISOString() : '')
                   setFieldTouched(name, true)
                   dispatch(date)
+                  setFieldValue('time', '')
               }}
               onBlur={() => setFieldTouched(name, true)}
               dateFormat="yyyy/MM/dd"
