@@ -47,6 +47,9 @@ const Reserve_Form = ({ onContinueToBilling, initialValues, availableTimes, disp
         <>
             <div className='bg-white'>
                 <Wrapper>
+                    <div className="bg-dark_green py-11 pl-7">
+                        <h1 className="text-gold font-display text-display_size max-sm:text-6xl text-7xl -mt-7">Book Now</h1>
+                    </div>
                     <Formik
                         initialValues={currentInitialValues}
                         validationSchema={validationSchema}
