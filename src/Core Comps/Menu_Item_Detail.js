@@ -7,6 +7,7 @@ import { Formik, Form, Field } from 'formik'
 import React, { useState, useEffect, useRef } from 'react'
 import Quantity_Button from '../Form Comps/Quantity_Button'
 import Alert from '../Alert Comps/Alert'
+import DeleteAlert from '../Alert Comps/DeleteAlert'
 import ClearCartButton from '../Form Comps/Clear_Cart_Button'
 import RemoveItemButton from '../Form Comps/Remove_Item_Button'
 import { useCart } from './cart_context'
@@ -17,6 +18,9 @@ const Menu_Item_Detail = () => {
   const menuItem = menu_items.find(item => item.url === itemName)
   const navigate = useNavigate()
   const { addItem } = useCart()
+  const [showClearAllConfirm, setShowClearAllConfirm] = useState(false)
+  const [showRemoveItemConfirm, setShowRemoveItemConfirm] = useState(false)
+  const [itemToRemoveIndex, setItemToRemoveIndex] = useState(null)
   const [quantity, setQuantity] = useState(0)
   const [pendingItems, setPendingItems] = useState(() => {
     try {
@@ -102,8 +106,62 @@ const Menu_Item_Detail = () => {
     )
   }
 
+  const handleClearPendingItems = () => {
+    setShowClearAllConfirm(true)
+  }
+
+  const confirmClearAll = () => {
+    localStorage.removeItem('pendingItems')
+    setPendingItems([])
+    setQuantity(0)
+    setShowClearAllConfirm(false)
+    setQuantityAlertMessage('Pending items cleared!')
+    setQuantityAlertType('success')
+  }
+
+  const cancelClearAll = () => {
+    setShowClearAllConfirm(false)
+  }
+
+  const handleRemoveItem = (index) => {
+    setItemToRemoveIndex(index)
+    setShowRemoveItemConfirm(true)
+  }
+
+  const confirmRemoveItem = () => {
+    if (itemToRemoveIndex !== null) {
+      const updatedPendingItems = [...pendingItems]
+      updatedPendingItems.splice(itemToRemoveIndex, 1)
+      setPendingItems(updatedPendingItems)
+      localStorage.setItem('pendingItems', JSON.stringify(updatedPendingItems))
+      setItemToRemoveIndex(null)
+      setQuantityAlertMessage('Item removed from pending items!')
+      setQuantityAlertType('info')
+    }
+    setShowRemoveItemConfirm(false)
+  }
+
+  const cancelRemoveItem = () => {
+    setShowRemoveItemConfirm(false)
+    setItemToRemoveIndex(null)
+  }
+
   return (
     <>
+      {showClearAllConfirm && (
+        <DeleteAlert
+          message="Are you sure you want to clear all pending items?"
+          onConfirm={confirmClearAll}
+          onCancel={cancelClearAll}
+        />
+      )}
+      {showRemoveItemConfirm && (
+        <DeleteAlert
+          message="Are you sure you want to remove this item?"
+          onConfirm={confirmRemoveItem}
+          onCancel={cancelRemoveItem}
+        />
+      )}
       <div className='bg-white'>
         <Wrapper>
           <Button
@@ -211,7 +269,7 @@ const Menu_Item_Detail = () => {
                         <div className="flex flex-row w-full justify-between items-center" role="group" aria-label="Quantity and Add to Order">
                           <span className="flex justify-between w-[10rem]">
                             <Quantity_Button
-                              onClick={() => handleQuantityChange(Math.max(1, quantity - 1))}
+                              onClick={() => handleQuantityChange(Math.max(0, quantity - 1))}
                               label='-'
                               aria-label="Decrease quantity"
                             />
@@ -240,6 +298,7 @@ const Menu_Item_Detail = () => {
                             setQuantityAlertMessage={setQuantityAlertMessage}
                             setQuantityAlertType={setQuantityAlertType}
                             aria-label="Add to Order"
+                            disabled={quantity < 1}
                           />
                         </div>
                       </Form>
@@ -254,11 +313,7 @@ const Menu_Item_Detail = () => {
             <div className="flex justify-between items-center mb-4">
               <ClearCartButton
                 label='Clear Pending Items'
-                onClick={() => {
-                  localStorage.removeItem('pendingItems')
-                  setPendingItems([])
-                  setQuantity(0)
-                }}
+                onClick={handleClearPendingItems}
                 aria-label="Clear all pending items"
               />
               <button
@@ -300,12 +355,7 @@ const Menu_Item_Detail = () => {
                         </ul>
                       )}
                     </div>
-                    <RemoveItemButton onClick={() => {
-                      const updatedPendingItems = [...pendingItems]
-                      updatedPendingItems.splice(index, 1)
-                      setPendingItems(updatedPendingItems)
-                      localStorage.setItem('pendingItems', JSON.stringify(updatedPendingItems))
-                    }} aria-label={`Remove ${item.name} from pending items`} />
+                    <RemoveItemButton onClick={() => handleRemoveItem(index)} aria-label={`Remove ${item.name} from pending items`} />
                   </li>
                 ))}
               </ul>

@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { useCart } from './cart_context'
 import Wrapper from './Wrapper'
 import ClearCartButton from '../Form Comps/Clear_Cart_Button'
+import DeleteAlert from '../Alert Comps/DeleteAlert'
 import RemoveItemButton from '../Form Comps/Remove_Item_Button'
 import Button from '../Form Comps/Button'
 import Billing from './Billing'
@@ -18,6 +19,7 @@ import Order_Card from './Order_Card'
 const Cart = () => {
     const navigate = useNavigate()
     const { items, removeItem, clearCart } = useCart()
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
     const [showBilling, setShowBilling] = useState(false)
     const [billingData, setBillingData] = useState({})
     const [finalFormData, setFinalFormData] = useState({})
@@ -56,6 +58,19 @@ const Cart = () => {
         }, 1000)
     }, [items, clearCart, navigate])
 
+    const handleClearCart = () => {
+        setShowDeleteConfirm(true)
+    }
+
+    const confirmClearCart = () => {
+        clearCart()
+        setShowDeleteConfirm(false)
+    }
+
+    const cancelClearCart = () => {
+        setShowDeleteConfirm(false)
+    }
+
     useEffect(() => {
         console.log('Cart items updated:', items)
     }, [items])
@@ -68,6 +83,13 @@ const Cart = () => {
 
     return (
         <div className='bg-white'>
+            {showDeleteConfirm && (
+                <DeleteAlert
+                    message="Are you sure you want to clear your cart?"
+                    onConfirm={confirmClearCart}
+                    onCancel={cancelClearCart}
+                />
+            )}
             {showWrapper && !showBilling && (
                 <Wrapper id='more'>
                     <div className='flex justify-between items-center h-[80px] py-24'>
@@ -202,7 +224,7 @@ const Cart = () => {
                                 <div className='flex justify-between max-sm:flex-col max-sm:my-10'>
                                     <ClearCartButton
                                     label='Clear Cart'
-                                    onClick={clearCart}
+                                    onClick={handleClearCart}
                                     aria-label="Clear Cart" />
                                 <Button
                                     className="max-sm:my-10"
