@@ -19,9 +19,9 @@ import globe_green from '../Img/icons_assets/globe_green.png'
 import globe_white from '../Img/icons_assets/globe_white.png'
 
 const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, backButtonLabel = 'Review Cart', reservationData }) => {
-    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-    const defaultInitialValues = { bill_name: '', bill_email: '', bill_phone: '', card: '', expiration: '', cvv: '', address: '', zip_code: '', country: '', state: '', confirmation: '' };
-    const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues;
+    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+    const defaultInitialValues = { bill_name: '', bill_email: '', bill_phone: '', card: '', expiration: '', cvv: '', address: '', zip_code: '', country: '', state: '', confirmation: ''}
+    const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues
 
     const validationSchema = Yup.object({
             bill_name: Yup.string().min(2, 'Minimum 2 characters').required('Required'),
@@ -48,13 +48,10 @@ const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, b
             }
 
             if (reservationData && Object.keys(reservationData).length > 0) {
-                successInfo.reservationDetails = {
-                    name: reservationData.user_name,
-                    date: reservationData.date,
-                    time: reservationData.time,
-                    guests: reservationData.num_of_diners,
-                    occasion: reservationData.occasion
-                }
+                const existingReservations = JSON.parse(localStorage.getItem('reservations') || '[]')
+                existingReservations.push(reservationData)
+                localStorage.setItem('reservations', JSON.stringify(existingReservations))
+                localStorage.removeItem('reservationData')
             }
             localStorage.setItem('successInfo', JSON.stringify(successInfo))
             navigate('/paymentsuccess')
@@ -78,8 +75,11 @@ const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, b
                     onSubmit={onSubmit}
                     enableReinitialize={true}
                 >
-                    {({ errors, touched, values, isValid }) => (
-                        <Form>
+                    {({ errors, touched, values, isValid }) => {
+                        console.log('Formik isValid:', isValid)
+                        console.log('reservationFormValid:', reservationFormValid)
+                        return (
+                            <Form>
 <Button className='min-w-full' label={backButtonLabel} onClick={() => onGoBackToReservation(values)} aria-label={backButtonLabel}>{backButtonLabel}</Button>
                             <Text_Input
                                 label={'Name of Card Holder'}
@@ -218,8 +218,8 @@ const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, b
                             {touched.confirmation && errors.confirmation && <div id="confirmation-error" className="error-message" hidden>{errors.confirmation}</div>}
                             <Button className='min-w-full' label='Pay Now' type={'submit'} disabled={!isValid || !reservationFormValid} aria-label="Pay Now" />
                         </Form>
-
-                    )}
+                        )
+                    }}
                 </Formik>
             </Wrapper>
         </div>

@@ -22,7 +22,7 @@ import green_group from '../Img/icons_assets/group_green.png'
 import white_group from '../Img/icons_assets/group_white.png'
 
 const Reserve_Form = ({ onContinueToBilling, initialValues, availableTimes, dispatch }) => {
-    const defaultInitialValues = { user_name: '', email: '', phone: '', date: '', time: '', num_of_diners: '', occasion: '', seating: '' };
+    const defaultInitialValues = { user_name: '', email: '', phone: '', date: '', time: '', num_of_diners: '', occasion: '', seating: ''}
     const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues;
 
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -40,8 +40,9 @@ const Reserve_Form = ({ onContinueToBilling, initialValues, availableTimes, disp
 
     const onSubmit = (values) => {
         console.log('Form Data:', values)
+        localStorage.setItem('reservationData', JSON.stringify(values));
         onContinueToBilling(values);
-    }
+    };
 
     return (
         <>
@@ -172,4 +173,5 @@ const Reserve_Form = ({ onContinueToBilling, initialValues, availableTimes, disp
         </>
     )
 }
+
 export default Reserve_Form
