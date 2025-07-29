@@ -105,17 +105,17 @@ const Menu_Item_Detail = () => {
     <>
       <div className='bg-white'>
         <Wrapper>
-          <h1 className="font-display text-black font-semibold text-[48pt] py-5">{menuItem.category}: {menuItem.name}</h1>
+          <h1 className="font-display text-black font-semibold text-[48pt] py-5" aria-label={`${menuItem.category}: ${menuItem.name}`}>{menuItem.category}: {menuItem.name}</h1>
           <div className="grid grid-cols-2 max-sm:grid-cols-1 items-stretch">
             <div className="flex-grow">
-              <img src={menuItem.img_src} alt={menuItem.name} className='w-hero-width h-full rounded-4xl object-cover' />
+              <img src={menuItem.img_src} alt={menuItem.name} className='w-hero-width h-full rounded-4xl object-cover' role="img" aria-label={`Image of ${menuItem.name}`} />
             </div>
             <div className=''>
               <p className="font-p font-semibold text-black ">{menuItem.description}</p>
-              <p className="font-p font-semibold text-light_orange text-right text-[18pt] py-5">Price: ${menuItem.price}</p>
+              <p className="font-p font-semibold text-light_orange text-right text-[18pt] py-5" aria-label={`Price: $${menuItem.price}`}>Price: ${menuItem.price}</p>
               {menuItem.extras && menuItem.extras.length > 0 && (
-                <div className="py-5">
-                  <h3 className="font-p text-black font-semibold text-[24pt]">Extras:</h3>
+                <div className="py-5" role="group" aria-labelledby="extras-heading">
+                  <h3 id="extras-heading" className="font-p text-black font-semibold text-[24pt]">Extras:</h3>
                   <Formik
                     innerRef={formikRef}
                     initialValues={{ selectedExtras: ['No Extras'] }}
@@ -127,8 +127,8 @@ const Menu_Item_Detail = () => {
                   >
                     {({ values, resetForm, setFieldValue }) => (
                       <Form>
-                        <ul>
-                          <li className="font-p text-black">
+                        <ul role="listbox" aria-label="Select extras">
+                          <li className="font-p text-black" role="option" aria-selected={values.selectedExtras.includes('No Extras')}>
                             <label className='w-full h-[60px] py-4 flex flex-row-reverse justify-between align-middle'>
                               <Field
                                 type="checkbox"
@@ -145,6 +145,7 @@ const Menu_Item_Detail = () => {
                                   }
                                   console.log(`New extras after change:`, values.selectedExtras)
                                 }}
+                                aria-label="No Extras"
                               />
                               <span className='flex flex-row w-[22rem] justify-between'>
                                 <p className='font-p font-semibold text-black'>{'No Extras'}</p>
@@ -153,7 +154,7 @@ const Menu_Item_Detail = () => {
                             </label>
                           </li>
                           {menuItem.extras.map((extra, index) => (
-                            <li key={index} className="font-p text-black">
+                            <li key={index} className="font-p text-black" role="option" aria-selected={values.selectedExtras.includes(extra.name_of_extra)}>
                               <Checkbox_Extras
                                 label={extra.name_of_extra}
                                 value={extra.name_of_extra}
@@ -196,20 +197,23 @@ const Menu_Item_Detail = () => {
                                   console.log(`New extras after change:`, newExtras)
                                   setFieldValue('selectedExtras', newExtras)
                                 }}
+                                aria-label={extra.name_of_extra}
                               />
                             </li>
                           ))}
                         </ul>
-                        <div className="flex flex-row w-full justify-between items-center">
+                        <div className="flex flex-row w-full justify-between items-center" role="group" aria-label="Quantity and Add to Order">
                           <span className="flex justify-between w-[10rem]">
                             <Quantity_Button
                               onClick={() => handleQuantityChange(Math.max(1, quantity - 1))}
                               label='-'
+                              aria-label="Decrease quantity"
                             />
-                            <span className="font-p text-black text-[18pt]">{quantity}</span>
+                            <span className="font-p text-black text-[18pt]" aria-live="polite" aria-atomic="true">{quantity}</span>
                             <Quantity_Button
                               onClick={() => handleQuantityChange(quantity + 1)}
                               label='+'
+                              aria-label="Increase quantity"
                             />
                           </span>
                           <Detail_Order_Button
@@ -229,6 +233,7 @@ const Menu_Item_Detail = () => {
                             }}
                             setQuantityAlertMessage={setQuantityAlertMessage}
                             setQuantityAlertType={setQuantityAlertType}
+                            aria-label="Add to Order"
                           />
                         </div>
                       </Form>
@@ -238,8 +243,8 @@ const Menu_Item_Detail = () => {
               )}
             </div>
           </div>
-          <div className="mt-5">
-            <h3 className="font-display text-black font-semibold text-[24pt]">Pending Items</h3>
+          <div className="mt-5" role="region" aria-labelledby="pending-items-heading">
+            <h3 id="pending-items-heading" className="font-display text-black font-semibold text-[24pt]">Pending Items</h3>
             <div className="flex justify-between items-center mb-4">
               <ClearCartButton
                 label='Clear Pending Items'
@@ -248,6 +253,7 @@ const Menu_Item_Detail = () => {
                   setPendingItems([])
                   setQuantity(0)
                 }}
+                aria-label="Clear all pending items"
               />
               <button
                 onClick={() => {
@@ -265,20 +271,21 @@ const Menu_Item_Detail = () => {
                 }}
                 className="bg-gold rounded-4xl text-black font-p h-desktop_btn px-11 drop-shadow-md
                     hover:bg-white hover:font-semibold active:bg-light_green active:text-white disabled:bg-light_orange disabled:cursor-not-allowed transition ease-in-out duration-450"
+                aria-label="Move all pending items to cart"
               >
                 Move All to Cart
               </button>
             </div>
             {pendingItems.length === 0 ? (
-              <p className="font-p text-black">No pending items</p>
+              <p className="font-p text-black" aria-live="polite">No pending items</p>
             ) : (
-              <ul>
+              <ul aria-label="List of pending items">
                 {pendingItems.map((item, index) => (
-                  <li key={index} className="font-p text-black py-4 flex justify-between items-center border-b border-gray-200">
+                  <li key={index} className="font-p text-black py-4 flex justify-between items-center border-b border-gray-200" aria-label={`${item.name} with quantity ${item.quantity}`}>
                     <div>
                       <p className="font-p text-black font-semibold">{item.name}</p>
                       {item.extras && item.extras.length > 0 && (
-                        <ul className="ml-4">
+                        <ul className="ml-4" aria-label="Item extras">
                           {item.extras.map((extra, extraIndex) => (
                             <li key={extraIndex} className="font-p text-black text-sm">
                               {extra.name} - ${extra.price.toFixed(2)}
@@ -292,7 +299,7 @@ const Menu_Item_Detail = () => {
                       updatedPendingItems.splice(index, 1)
                       setPendingItems(updatedPendingItems)
                       localStorage.setItem('pendingItems', JSON.stringify(updatedPendingItems))
-                    }} />
+                    }} aria-label={`Remove ${item.name} from pending items`} />
                   </li>
                 ))}
               </ul>

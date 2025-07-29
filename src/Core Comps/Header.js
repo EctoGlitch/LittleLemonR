@@ -1,83 +1,90 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import desktop_logo from '../Img/icons_assets/Logo.svg'
 import mobile_logo from '../Img/icons_assets/LogoM.svg'
 import basket from '../Img/icons_assets/Basket.svg'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 
 function Header() {
-  const prevScrollY = useRef(0);
-  const [isHidden, setIsHidden] = useState(false);
+  const prevScrollY = useRef(0)
+  const [isHidden, setIsHidden] = useState(false)
 
-  const hamburgerRef = useRef(null);
+  const hamburgerRef = useRef(null)
   const [isOpen, setIsOpen] = useState(false)
   const [hamburgerClasses, setHamburgerClasses] = useState({
     top: 'bg-dark_green h-1 w-8 m-2 max-sm:block',
     mid: 'bg-dark_green h-1 w-8 m-2 max-sm:block',
     bot: 'bg-dark_green h-1 w-8 m-2 max-sm:block',
-  });
+  })
 
   // Debounce function
   // this was to fix it sliding up unexpectedly
   function debounce(func, delay) {
-    let timeout;
+    let timeout
     return function(...args) {
-      const context = this;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(context, args), delay);
-    };
+      const context = this
+      clearTimeout(timeout)
+      timeout = setTimeout(() => func.apply(context, args), delay)
+    }
   }
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen); // Toggles isOpen when the button is pressed
-  };
+    setIsOpen(!isOpen) // Toggles isOpen when the button is pressed
+  }
 
   useEffect(() => {
     function animateMenu() {
-      const midNav = document.getElementById('mid_navs');
+      const midNav = document.getElementById('mid_navs')
       if (midNav) {
         if (isOpen) {
-          midNav.style.animation = 'collapse_reverse 0.8s ease-in forwards';
+          midNav.style.animation = 'collapse_reverse 0.8s ease-in forwards'
         } else {
-          midNav.style.animation = 'collapse ease-in 0.8s forwards';
+          midNav.style.animation = 'collapse ease-in 0.8s forwards'
         }
       }
     }
-    animateMenu();
-  }, [isOpen]);
+    animateMenu()
+  }, [isOpen])
 
   useEffect(() => {
-    setHamburgerClasses(`max-sm:absolute max-sm:left-8 ${isOpen ? 'hamburger-open' : 'hamburger-closed'}`);
-  }, [isOpen]);
+    setHamburgerClasses(`max-sm:absolute max-sm:left-8 ${isOpen ? 'hamburger-open' : 'hamburger-closed'}`)
+  }, [isOpen])
 
 
   useEffect(() => {
   function hideOnScroll() {
-    const currentScrollY = window.scrollY;
-    const threshold = window.innerHeight / 4; // Percentage of the page
+    const currentScrollY = window.scrollY
+    const threshold = window.innerHeight / 4 // Percentage of the page
 
-    setIsHidden(currentScrollY > prevScrollY.current && currentScrollY > threshold);
-    prevScrollY.current = currentScrollY;
+    setIsHidden(currentScrollY > prevScrollY.current && currentScrollY > threshold)
+    prevScrollY.current = currentScrollY
   }
 
-  const debouncedHideOnScroll = debounce(hideOnScroll, 300);
+  const debouncedHideOnScroll = debounce(hideOnScroll, 300)
 
-  window.addEventListener('scroll', debouncedHideOnScroll);
+  window.addEventListener('scroll', debouncedHideOnScroll)
 
   return () => {
-    window.removeEventListener('scroll', debouncedHideOnScroll);
-  };
-}, []);
+    window.removeEventListener('scroll', debouncedHideOnScroll)
+  }
+}, [])
 
   const navClasses = `z-50 relative bg-white text-dark_green font-p flex h-desktop_nav max-[400px]:h-mobile_nav justify-center place-items-center sticky top-0 transition-transform duration-300
-  ${isHidden ? 'slideup'  : 'slidedown'}`;
+  ${isHidden ? 'slideup'  : 'slidedown'}`
 
 
     return (
-      <nav id='nav' className={navClasses}>
+      <nav id='nav' className={navClasses} role="navigation" aria-label="Main navigation">
           <ul className='h-8 flex flex-row w-4/5 justify-evenly place-items-center list-none '>
               <li className='max-sm:absolute max-sm:left-8'>
-                <button id='hamburger' className='hidden max-sm:block' onClick={toggleMenu}>
+                <button
+                  id='hamburger'
+                  className='hidden max-sm:block'
+                  onClick={toggleMenu}
+                  aria-label="Toggle navigation menu"
+                  aria-expanded={isOpen}
+                  aria-controls="mid_navs"
+                >
                   <span id='top_ham' className={`bg-dark_green h-1 w-8 m-2 max-sm:block
                     ${isOpen ? 'top_ham' : 'top_ham_reverse' }`}>
                   </span>
@@ -90,11 +97,11 @@ function Header() {
                 </button>
               </li>
               <li>
-                  <Link to="/">
+                  <Link to="/" aria-label="Little Lemon Home">
                       <picture className='max-sm:absolute max-sm:top-1/3 max-sm:-translate-1/2 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:w-8 sm:h-auto ' >
                           <source media='(min-width:600px)' srcSet={desktop_logo}/>
                           <source media='(max-width:599px)' srcSet={mobile_logo}/>
-                          <img src={mobile_logo} />
+                          <img src={mobile_logo} alt="Little Lemon logo" />
                       </picture>
                   </Link>
               </li>
@@ -102,28 +109,30 @@ function Header() {
               className={`flex justify-evenly place-items-center max-sm:place-items-start
               max-sm:pl-8 max-sm:h-80 bg-white w-screen flex-row max-sm:flex-col
               max-sm:absolute max-sm:top-24 max-sm:z-10`}
+              role="menu"
+              aria-labelledby="hamburger"
               >
-                <li className='hover:font-bold active:text-black'>
-                    <Link to="/">Home</Link>
+                <li className='hover:font-bold active:text-black' role="none">
+                    <Link to="/" role="menuitem">Home</Link>
                 </li>
-                <li className='hover:font-bold active:text-black'>
-                    <Link to="/about">About</Link>
+                <li className='hover:font-bold active:text-black' role="none">
+                    <Link to="/about" role="menuitem">About</Link>
                 </li>
-                <li className='hover:font-bold active:text-black'>
-                    <Link to="/menu">Menu</Link>
+                <li className='hover:font-bold active:text-black' role="none">
+                    <Link to="/menu" role="menuitem">Menu</Link>
                 </li>
-                <li className='hover:font-bold active:text-black'>
-                    <Link to="/reservations">Reservations</Link>
+                <li className='hover:font-bold active:text-black' role="none">
+                    <Link to="/reservations" role="menuitem">Reservations</Link>
                 </li>
-                <li className='hover:font-bold active:text-black'>
-                    <Link to="/order-online">Order Online</Link>
+                <li className='hover:font-bold active:text-black' role="none">
+                    <Link to="/order-online" role="menuitem">Order Online</Link>
                 </li>
-                <li className='hover:font-bold active:text-black'>
-                    <Link to="/login">Login</Link>
+                <li className='hover:font-bold active:text-black' role="none">
+                    <Link to="/login" role="menuitem">Login</Link>
                 </li>
               </div>
               <li className='hover:font-bold active:text-black max-sm:absolute max-sm:right-10'>
-                    <Link to="/cart"><img src={basket} alt="Basket" /></Link>
+                    <Link to="/cart" aria-label="Shopping Cart"><img src={basket} alt="Shopping cart icon" /></Link>
               </li>
           </ul>
       </nav>

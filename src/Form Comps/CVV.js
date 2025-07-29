@@ -3,7 +3,7 @@ import { Field, ErrorMessage, useFormikContext } from 'formik'
 import creditCardIcon_white from '../Img/icons_assets/creditcard.svg'
 import creditCardIcon_green from '../Img/icons_assets/creditcard.svg' // Assuming green version is also creditcard.svg or similar
 
-const CVV_Input = ({ label, name, touched, error }) => {
+const CVV_Input = ({ label, name, touched, error, 'aria-label': ariaLabel, 'aria-invalid': ariaInvalid, 'aria-describedby': ariaDescribedBy }) => {
     const { setFieldValue, values } = useFormikContext()
     const [displayValue, setDisplayValue] = useState('')
 
@@ -20,10 +20,10 @@ const CVV_Input = ({ label, name, touched, error }) => {
         setDisplayValue(truncatedDigits)
     }
 
-    const isPlaceholder = !displayValue;
-    const imageSrc = isPlaceholder ? creditCardIcon_green : creditCardIcon_white;
-    const textColorClass = isPlaceholder ? 'text-black' : 'text-white';
-    const bgColorClass = isPlaceholder ? 'bg-[#fff]' : 'bg-dark_green';
+    const isPlaceholder = !displayValue
+    const imageSrc = isPlaceholder ? creditCardIcon_green : creditCardIcon_white
+    const textColorClass = isPlaceholder ? 'text-black' : 'text-white'
+    const bgColorClass = isPlaceholder ? 'bg-[#fff]' : 'bg-dark_green'
 
     return (
         <>
@@ -44,10 +44,11 @@ const CVV_Input = ({ label, name, touched, error }) => {
                         maxLength="3"
                         value={displayValue}
                         onChange={handleCVVChange}
+                        aria-label={ariaLabel || label}
                     />
                 </div>
                 {touched && error ? (
-                    <div className='h-10 text-red-700 py-4'>
+                    <div className='h-10 text-red-700 py-4' id={`${name}-error`}>
                         <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />
                     </div>) : (
                     <div className='h-10 text-red-700 py-4'></div>

@@ -40,7 +40,7 @@ const addToLocalStorage = (event) => {
     return (
         <>
             <button type='submit' onClick={addToLocalStorage} className=" bg-gold rounded-4xl text-black font-p h-desktop_btn px-11 drop-shadow-md
-                hover:bg-white hover:font-semibold active:bg-light_green active:text-white disabled:bg-light_orange disabled:cursor-not-allowed transition ease-in-out duration-450 justify-self-end">
+                hover:bg-white hover:font-semibold active:bg-light_green active:text-white disabled:bg-light_orange disabled:cursor-not-allowed transition ease-in-out duration-450 justify-self-end" aria-label={label}>
                 { label }
             </button>
         </>

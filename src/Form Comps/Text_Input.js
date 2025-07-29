@@ -53,6 +53,7 @@ const Text_Input = ({ label, type, name, touched, error }) => {
                 inputMode={type === 'tel' ? 'numeric' : undefined}
                 value={type === 'tel' ? displayValue : values[name] || ''}
                 onChange={type === 'tel' ? handlePhoneChange : handleGenericChange}
+                aria-label={label}
             />
             {touched && error ? (
                 <div className='h-10 text-red-700 py-4'>

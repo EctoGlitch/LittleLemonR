@@ -23,15 +23,15 @@ export const updateTimes = (state, date) => {
     case 2: // Tuesday
     case 3: // Wednesday
     case 4: // Thursday
-      return ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+      return ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00']
     case 5: // Friday
     case 6: // Saturday
     case 0: // Sunday
-      return ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+      return ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00']
     default:
       return initializeTimes()
   }
-};
+}
 
 function AppContent() {
   const { alertMessage, alertType } = useCart()
@@ -48,7 +48,7 @@ function AppContent() {
           <meta property="og:description" content="This is the Little Lemon homepage." />
           <meta property="og:image" content={logo} />
       </Helmet>
-      <main className='relative'>
+      <main className='relative' role="main">
         <Header/>
         <Outlet context={{ availableTimes, dispatch }}/>
         <Footer/>

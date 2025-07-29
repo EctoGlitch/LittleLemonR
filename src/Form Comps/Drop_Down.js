@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
-import { ErrorMessage, useFormikContext } from 'formik';
+import { useState, useRef, useEffect } from 'react'
+import { ErrorMessage, useFormikContext } from 'formik'
 
-const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h, touched, error }) => {
+const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h, touched, error, 'aria-label': ariaLabel, 'aria-invalid': ariaInvalid, 'aria-describedby': ariaDescribedBy }) => {
     const { values, setFieldValue, setFieldTouched } = useFormikContext()
 
     const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +29,7 @@ const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h
 
     const handleOptionClick = (option) => {
         setSelectedOption(option.label)
-        setIsOpen(false);
+        setIsOpen(false)
 
         if (setFieldValue) {
             setFieldValue(name, option.value)
@@ -41,14 +41,14 @@ const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h
 
     const handlePlaceholderClick = () => {
         setSelectedOption(placeholderText)
-        setIsOpen(false);
+        setIsOpen(false)
         if (setFieldValue) {
             setFieldValue(name, '')
             if (setFieldTouched) {
                 setFieldTouched(name, true)
             }
         }
-    };
+    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -76,6 +76,7 @@ const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h
                 <button
                     onClick={toggleDropdown}
                     className={`w-full h-[80px] relative font-p py-6 rounded-4xl focus:outline-black appearance-none text-center flex items-center justify-between px-4 ${selectedOption === placeholderText ? 'text-black bg-[#fff]' : 'bg-dark_green text-white'}`}
+                    aria-label={ariaLabel || label}
                 >
 
                     <img
@@ -125,56 +126,56 @@ const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h
             )}
         </div>
         </>
-    );
+    )
 }
 
 
 const Standalone_Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h, value: initialValue, onChange }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
-    const dropdownRef = useRef(null);
-    const placeholderText = label.toLowerCase();
+    const [isOpen, setIsOpen] = useState(false)
+    const [selectedOption, setSelectedOption] = useState('')
+    const dropdownRef = useRef(null)
+    const placeholderText = label.toLowerCase()
 
     useEffect(() => {
         if (options && options.length > 0) {
-            const initialOption = options.find(option => option.value === initialValue);
+            const initialOption = options.find(option => option.value === initialValue)
             if (initialOption) {
-                setSelectedOption(initialOption.label);
+                setSelectedOption(initialOption.label)
             } else {
-                setSelectedOption(placeholderText);
+                setSelectedOption(placeholderText)
             }
         }
-    }, [initialValue, options, placeholderText]);
+    }, [initialValue, options, placeholderText])
 
     const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+        setIsOpen(!isOpen)
+    }
 
     const handleOptionClick = (option) => {
-        setSelectedOption(option.label);
-        setIsOpen(false);
-        onChange(option.value);
-    };
+        setSelectedOption(option.label)
+        setIsOpen(false)
+        onChange(option.value)
+    }
 
     const handlePlaceholderClick = () => {
-        setSelectedOption(placeholderText);
-        setIsOpen(false);
-        onChange('');
-    };
+        setSelectedOption(placeholderText)
+        setIsOpen(false)
+        onChange('')
+    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setIsOpen(false);
+                setIsOpen(false)
             }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
+        }
+        document.addEventListener('mousedown', handleClickOutside)
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [])
 
-    const imageSrc = selectedOption === placeholderText ? img_defualt : img_active;
+    const imageSrc = selectedOption === placeholderText ? img_defualt : img_active
 
     return (
         <>
@@ -225,9 +226,9 @@ const Standalone_Drop_Down = ({ label, name, options, img_defualt, img_active, i
                 </div>
             </div>
         </>
-    );
+    )
 }
 
 
-export default Drop_Down;
+export default Drop_Down
 export { Standalone_Drop_Down }

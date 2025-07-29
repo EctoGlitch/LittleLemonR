@@ -23,7 +23,12 @@ const Alert = ({ message, type, duration = 5000 }) => {
 
     return (
         <>
-            <div className={`fixed top-5 h-[150px] w-full max-w-md left-1/2 transform -translate-x-1/2 p-4 rounded-lg shadow-lg text-black font-p ${alertClasses[type] || 'bg-gray-700'} bg-opacity-100 transition-opacity duration-500 z-50 flex items-center justify-between`}>
+            <div
+                className={`fixed top-5 h-[150px] w-full max-w-md left-1/2 transform -translate-x-1/2 p-4 rounded-lg shadow-lg text-black font-p ${alertClasses[type] || 'bg-gray-700'} bg-opacity-100 transition-opacity duration-500 z-50 flex items-center justify-between`}
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+            >
                 <span className='font-p h-fit flex flex-col text-wrap'>
                     {message.split('\n').map((line, index) => (
                         <React.Fragment key={index}>

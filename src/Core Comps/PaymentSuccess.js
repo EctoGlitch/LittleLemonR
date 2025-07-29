@@ -38,7 +38,7 @@ const PaymentSuccess = () => {
                 <h1 className="text-gold font-display text-display_size max-sm:text-6xl text-7xl mb-4">Reservation <br/> Confirmed!</h1>
                 <img src={logo} className='w-16 h-24 drop-shadow-2xl'/>
                 <p className="text-xl mb-6">Thank you for your reservation.</p>
-                <div className="text-left text-lg">
+                <div className="text-left text-lg" role="group" aria-label="Reservation Details">
                     <p><strong>Name:</strong> {reservationDetails.name}</p>
                     <p><strong>Date:</strong> {new Date(reservationDetails.date).toISOString().split('T')[0]}</p>
                     <p><strong>Time:</strong> {formatTime(reservationDetails.time)}</p>
@@ -54,7 +54,7 @@ const PaymentSuccess = () => {
         displayMessage = (
             <>
                 <h1 className="text-gold font-display text-display_size max-sm:text-6xl text-7xl mb-4">Payment Successful!</h1>
-                <img src={logo} className='w-16 h-24 drop-shadow-2xl'/>
+                <img src={logo} className='w-16 h-24 drop-shadow-2xl' alt="Little Lemon logo"/>
                 <p className="text-xl mb-6">Thank you for your order.</p>
                 {successInfo.name && <p className="text-xl mb-6"><strong>Name:</strong> {successInfo.name}</p>}
                 <p className="text-xl mb-6">{message}</p>
@@ -65,7 +65,7 @@ const PaymentSuccess = () => {
     return (
         <div className='p-16 max-sm:p-10 bg-white'>
             <div className="bg-white h-[700px]  max-sm:h-[550px] flex justify-center">
-                    <div className="text-center flex w-[600px] flex-col items-center text-white p-8 rounded-lg shadow-lg bg-dark_green mt-20 max-sm:mt-5 *:my-2">
+                    <div className="text-center flex w-[600px] flex-col items-center text-white p-8 rounded-lg shadow-lg bg-dark_green mt-20 max-sm:mt-5 *:my-2" role="status" aria-live="polite">
                         {displayMessage}
                     </div>
             </div>

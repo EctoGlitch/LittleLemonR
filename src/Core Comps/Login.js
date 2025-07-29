@@ -32,25 +32,33 @@ const Login = () => {
                     >
                         {({ errors, touched, isValid }) => (
                             <Form>
-                                <Text_Input
-                                    label={'Email'}
-                                    type={'text'}
-                                    name={'email'}
-                                    touched={touched.email}
-                                    error={errors.email}
-                                />
-                                <Text_Input
-                                    label={'Password'}
-                                    type={'password'}
-                                    name={'password'}
-                                    touched={touched.password}
-                                    error={errors.password}
-                                />
-                                <Link to='/register'>
-                                    <p  className=' py-4 font-p text-right text-black font-bold'>Need an account? Signup now!</p>
-                                </Link>
-                                <Button_full type={'submit'} label='Submit' disabled={!isValid} />
-                        </Form>
+                                 <Text_Input
+                                     label={'Email'}
+                                     type={'text'}
+                                     name={'email'}
+                                     touched={touched.email}
+                                     error={errors.email}
+                                     aria-label="Email"
+                                     aria-invalid={touched.email && errors.email ? "true" : "false"}
+                                     aria-describedby={touched.email && errors.email ? "email-error" : undefined}
+                                 />
+                                 {touched.email && errors.email && <div id="email-error" className="error-message" hidden>{errors.email}</div>}
+                                 <Text_Input
+                                     label={'Password'}
+                                     type={'password'}
+                                     name={'password'}
+                                     touched={touched.password}
+                                     error={errors.password}
+                                     aria-label="Password"
+                                     aria-invalid={touched.password && errors.password ? "true" : "false"}
+                                     aria-describedby={touched.password && errors.password ? "password-error" : undefined}
+                                 />
+                                 {touched.password && errors.password && <div id="password-error" className="error-message" hidden>{errors.password}</div>}
+                                 <Link to='/register'>
+                                     <p  className=' py-4 font-p text-right text-black font-bold'>Need an account? Signup now!</p>
+                                 </Link>
+                                 <Button_full type={'submit'} label='Submit' disabled={!isValid} aria-label="Submit Login" />
+                         </Form>
 
                         )}
                     </Formik>

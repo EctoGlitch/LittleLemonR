@@ -16,7 +16,7 @@ const Order_Button = ({ label, name, price}) => {
     return (
         <>
             <button type='submit' onClick={addToLocalStorage} className="z-10 top-4 right-4 absolute bg-gold rounded-full text-black font-p w-9 h-9 drop-shadow-md
-        hover:bg-white hover:font-semibold active:bg-light_green active:text-white  transition ease-in-out duration-450 ">
+        hover:bg-white hover:font-semibold active:bg-light_green active:text-white  transition ease-in-out duration-450 " aria-label={`Add ${name} to order`}>
                 { label }
             </button>
         </>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorMessage, useFormikContext, Field } from 'formik';
+import { ErrorMessage, useFormikContext, Field } from 'formik'
 
 function Radio({ label1, value1, label2, value2, name, touched, error }) {
   const { field } = useFormikContext();
@@ -10,11 +10,11 @@ function Radio({ label1, value1, label2, value2, name, touched, error }) {
       <div id="my-radio-group" className='font-p text-black font-bold'>Seating Options: </div>
           <div role="group">
             <label className='w-full h-[60px] py-4 flex flex-row-reverse justify-between align-middle'>
-              <Field type="radio" name={ name } value={ value1 } />
+            <Field type="radio" name={ name } value={ value1 } />
               <p className='text-black font-p'>{ label1 }</p>
             </label>
             <label className='w-full h-[60px] py-4 flex flex-row-reverse justify-between align-middle'>
-              <Field type="radio" name={ name } value={ value2 } />
+            <Field type="radio" name={ name } value={ value2 } />
               <p className='text-black font-p'>{ label2 }</p>
             </label>
           </div>

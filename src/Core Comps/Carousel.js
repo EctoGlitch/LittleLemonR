@@ -1,31 +1,31 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import React, { useRef, useEffect, useState } from 'react'
+import { motion, useMotionValue } from 'framer-motion'
 
 const Carousel = ({ children }) => {
-    const constraintsRef = useRef(null);
-    const carouselRef = useRef(null);
-    const x = useMotionValue(0);
-    const [leftConstraint, setLeftConstraint] = useState(0);
+    const constraintsRef = useRef(null)
+    const carouselRef = useRef(null)
+    const x = useMotionValue(0)
+    const [leftConstraint, setLeftConstraint] = useState(0)
 
     useEffect(() => {
         const calculateConstraints = () => {
             if (constraintsRef.current && carouselRef.current) {
-                const containerWidth = constraintsRef.current.offsetWidth;
+                const containerWidth = constraintsRef.current.offsetWidth
                 const carouselContentWidth = carouselRef.current.scrollWidth
                 const newLeftConstraint = containerWidth - carouselContentWidth
-                setLeftConstraint(Math.min(0, newLeftConstraint));
+                setLeftConstraint(Math.min(0, newLeftConstraint))
             }
-        };
-        calculateConstraints();
+        }
+        calculateConstraints()
         window.addEventListener('resize', calculateConstraints)
         return () => {
             window.removeEventListener('resize', calculateConstraints)
-        };
-    }, [children]);
+        }
+    }, [children])
 
     return (
         <>
-            <div className="overflow-hidden" ref={constraintsRef}>
+            <div className="overflow-hidden" ref={constraintsRef} role="region" aria-label="Image Carousel">
                 <motion.div
                     className="flex gap-3 cursor-grab active:cursor-grabbing"
                     style={{ x }}
@@ -34,13 +34,15 @@ const Carousel = ({ children }) => {
                     dragElastic={0.2}
                     dragMomentum={true}
                     ref={carouselRef}
+                    role="group"
+                    aria-roledescription="carousel"
                 >
                     {children}
                 </motion.div>
             </div>
         </>
         
-    );
-};
+    )
+}
 
-export default Carousel;
+export default Carousel

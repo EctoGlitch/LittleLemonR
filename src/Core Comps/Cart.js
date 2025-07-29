@@ -89,23 +89,24 @@ const Cart = () => {
                             value={selectedValue}
                             onChange={handleDropdownChange}
                             className="flex items-center h-[80px]"
+                            aria-label="Select delivery duration"
                             />
                         </div>
                         </div>
 
                     <hr/>
-                    <div>
-                        <label className='text-black font-black font-p '>Cutlery</label>
+                    <div role="group" aria-labelledby="cutlery-heading">
+                        <label id="cutlery-heading" className='text-black font-black font-p '>Cutlery</label>
                         <div className='flex justify-between items-center'>
-                            <label className='text-black font-semibold font-p my-5' for="cutlery">Help reduce plastic waste. Only ask for cutlery if you need it.</label>
-                            <input type="checkbox" name="cutlery" value={false}></input>
+                            <label className='text-black font-semibold font-p my-5' htmlFor="cutlery">Help reduce plastic waste. Only ask for cutlery if you need it.</label>
+                            <input type="checkbox" id="cutlery" name="cutlery" value={false} aria-label="Request cutlery"></input>
                         </div>
                     </div>
                     <hr/>
 
                     <h1 className="font-display text-black font-semibold text-[48pt] py-5">Cart</h1>
-                    <div >
-                        <p className="text-black font-p font-black my-5 uppercase">Add More To Your Order!</p>
+                    <div role="region" aria-labelledby="add-more-heading">
+                        <p id="add-more-heading" className="text-black font-p font-black my-5 uppercase">Add More To Your Order!</p>
                         <Carousel id="more">
                             <div className="grid gap-4"
                                     style={{gridTemplateColumns: `repeat(${len_more}, minmax(440px, 1fr))`}}>
@@ -128,24 +129,24 @@ const Cart = () => {
             )}
             {showWrapper && !showBilling ? (
                 items.length === 0 ? (
-                    <Wrapper><p className="font-p py-20 text-black">Your cart is empty.</p></Wrapper>
+                    <Wrapper><p className="font-p py-20 text-black" aria-live="polite">Your cart is empty.</p></Wrapper>
 
                     ) : (
                         <>
                         <Wrapper>
-                            <p className='font-p font-bold text-[18pt] text-black'>Order Summary</p>
-                            <ul>
+                            <p id="order-summary-heading" className='font-p font-bold text-[18pt] text-black'>Order Summary</p>
+                            <ul aria-labelledby="order-summary-heading">
                                 {items.map((item, index) => {
                                     const itemPrice = typeof item.price === 'number' ? item.price : 0
                                     const itemQuantity = typeof item.quantity === 'number' ? item.quantity : 1
                                     const totalExtraPricePerItem = item.extras ? item.extras.reduce((sum, extra) => sum + (typeof extra.price === 'number' ? extra.price : 0), 0) : 0
                                     const totalPriceForItem = (itemPrice + totalExtraPricePerItem) * itemQuantity
                                     return (
-                                        <li key={index} className="font-p text-black py-2 border-b border-gray-200 flex justify-between items-center">
+                                        <li key={index} className="font-p text-black py-2 border-b border-gray-200 flex justify-between items-center" aria-label={`${item.name} x ${item.quantity}`}>
                                             <div>
                                                 <p className="font-semibold">{item.name} x {item.quantity} - ${totalPriceForItem.toFixed(2)}</p>
                                                 {item.extras && item.extras.length > 0 && (
-                                                    <ul className="pl-4 text-sm">
+                                                    <ul className="pl-4 text-sm" aria-label="Extras">
                                                         {item.extras.map((extra, extraIndex) => (
                                                             <li key={extraIndex}>
                                                                 {extra.name} (+${extra.price.toFixed(2)})
@@ -154,12 +155,12 @@ const Cart = () => {
                                                     </ul>
                                                 )}
                                             </div>
-                                            <RemoveItemButton onClick={() => removeItem(index)} />
+                                            <RemoveItemButton onClick={() => removeItem(index)} aria-label={`Remove ${item.name} from cart`} />
                                         </li>
                                     )
                                 })}
                             </ul>
-                            <div className="py-5">
+                            <div className="py-5" role="group" aria-label="Order Totals">
                                 <p className="font-p font-bold text-[18pt] text-black text-right">
                                     Subtotal: ${
                                         items.reduce((total, item) => {
@@ -199,11 +200,13 @@ const Cart = () => {
                                 <div className='flex justify-between max-sm:flex-col max-sm:my-10'>
                                     <ClearCartButton
                                     label='Clear Cart'
-                                    onClick={clearCart} />
+                                    onClick={clearCart}
+                                    aria-label="Clear Cart" />
                                 <Button
                                     className="max-sm:my-10"
                                     label='Proceed to Payment'
                                     onClick={handleContinueToBilling}
+                                    aria-label="Proceed to Payment"
                                 />
                                 </div>
                             </div>

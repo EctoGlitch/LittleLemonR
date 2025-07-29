@@ -5,7 +5,7 @@ import { forwardRef } from 'react'
 import calendarIcon_white from '../Img/icons_assets/clock_white.png'
 import calendarIcon_green from '../Img/icons_assets/clock_green.png'
 
-const ExpirySelector = ({ label, name, touched, error }) => {
+const ExpirySelector = ({ label, name, touched, error, 'aria-label': ariaLabel, 'aria-invalid': ariaInvalid, 'aria-describedby': ariaDescribedBy }) => {
   const { setFieldValue, values, setFieldTouched } = useFormikContext()
 
   const CustomDateInput = forwardRef(({ value, onClick }, ref) => {
@@ -16,12 +16,13 @@ const ExpirySelector = ({ label, name, touched, error }) => {
     const arrowFill = isPlaceholder ? '#495e57' : '#edefee'
 
     return (
-      <button
-        type="button"
-        onClick={onClick}
-        ref={ref}
-        className={`w-full h-[80px] relative font-p py-6 rounded-4xl focus:outline-black appearance-none text-center flex items-center justify-between px-4 ${textColorClass} ${bgColorClass}`}
-      >
+        <button
+          type="button"
+          onClick={onClick}
+          ref={ref}
+          className={`w-full h-[80px] relative font-p py-6 rounded-4xl focus:outline-black appearance-none text-center flex items-center justify-between px-4 ${textColorClass} ${bgColorClass}`}
+          aria-label={ariaLabel || label}
+        >
         <img
           src={imageSrc}
           alt="Calendar Icon"
@@ -58,9 +59,10 @@ const ExpirySelector = ({ label, name, touched, error }) => {
             isClearable={true}
             onCalendarClose={() => setFieldTouched(name, true)}
             minDate={new Date()} // Prevents selection of dates before today
+            aria-label={ariaLabel || label}
         />
         {touched && error ? (
-            <div className='h-10 text-red-700 py-4'>
+            <div className='h-10 text-red-700 py-4' id={`${name}-error`}>
                 <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />
             </div>) : (
                 <div className='h-10 text-red-700 py-4'></div>

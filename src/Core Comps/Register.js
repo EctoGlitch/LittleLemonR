@@ -37,12 +37,13 @@ const Register = () => {
                         {({ errors, touched, isValid }) => (
                             <Form>
                                 <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-6 max-sm:gap-0">
-                                    <Text_Input
+                                <Text_Input
                                     label={'First Name'}
                                     type={'text'}
                                     name={'f_name'}
                                     touched={touched.f_name}
                                     error={errors.f_name}
+                                    aria-label="First Name"
                                 />
 
                                 <Text_Input
@@ -51,6 +52,7 @@ const Register = () => {
                                     name={'l_name'}
                                     touched={touched.l_name}
                                     error={errors.l_name}
+                                    aria-label="Last Name"
                                 />
 
                                 </div>
@@ -61,6 +63,7 @@ const Register = () => {
                                     name={'email'}
                                     touched={touched.email}
                                     error={errors.email}
+                                    aria-label="Email"
                                 />
                                 <Text_Input
                                     label={'Password'}
@@ -68,6 +71,7 @@ const Register = () => {
                                     name={'password'}
                                     touched={touched.password}
                                     error={errors.password}
+                                    aria-label="Password"
                                 />
 
                                 <Text_Input
@@ -76,11 +80,12 @@ const Register = () => {
                                     name={'re_password'}
                                     touched={touched.re_password}
                                     error={errors.re_password}
+                                    aria-label="Confirm Password"
                                 />
-                                <Link to='/login'>
+                                <Link to='/login' aria-label="Go to login page">
                                     <p  className='py-4 font-p text-right text-black font-bold'>Already have an account?</p>
                                 </Link>
-                                <Button_full type='submit' label='Submit' disabled={!isValid} />
+                                <Button_full type='submit' label='Submit' disabled={!isValid} aria-label="Submit registration form" />
                         </Form>
 
                         )}

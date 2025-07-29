@@ -12,6 +12,7 @@ const Quantity_Button = ({ onClick, label }) => {
         onClick={handleClick}
         className=" bg-gold rounded-full text-black font-p w-9 h-9 drop-shadow-md
         hover:bg-white hover:font-semibold active:bg-light_green active:text-white  transition ease-in-out duration-450 "
+        aria-label={label === '+' ? 'Increase quantity' : 'Decrease quantity'}
       >
         <p className='text-black font-p font-[18pt]'>{label}</p>
       </button>

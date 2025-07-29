@@ -74,9 +74,9 @@ const Order_Online = () => {
 
     return (
         <>
-            <Hero className='mx-auto'>
+            <Hero className='mx-auto' role="region" aria-labelledby="order-online-heading">
                     <div className="w-hero-width max-sm:w-full mx-auto *:py-8">
-                        <h1 className="text-gold font-display text-display_size max-sm:text-7xl -mt-7">Always Fresh</h1>
+                        <h1 id="order-online-heading" className="text-gold font-display text-display_size max-sm:text-7xl -mt-7">Always Fresh</h1>
                         <Standalone_Drop_Down
                             label="Select an option"
                             name="location"
@@ -87,27 +87,30 @@ const Order_Online = () => {
                             img_h="h-6"
                             value={selectedValue}
                             onChange={handleDropdownChange}
+                            aria-label="Select delivery location"
                         />
-                        <span className='w-11/12 h-20 flex flex-row items-center justify-between  max-sm:grid  max-sm:grid-cols-2 max-sm:w-[333px] max-sm:h-[300px]' >
+                        <span className='w-11/12 h-20 flex flex-row items-center justify-between  max-sm:grid  max-sm:grid-cols-2 max-sm:w-[333px] max-sm:h-[300px]' role="group" aria-label="Meal Categories">
                             <img src={breakfast} className='block w-16 h-16 max-sm:justify-self-center' alt='Breakfast Icon'/>
                             <img src={lunch} className='block w-75px h-14 max-sm:justify-self-center' alt='Lunch Icon'/>
                             <img src={dinner} className='block w-16 h-16 max-sm:justify-self-center' alt='Dinner Icon'/>
                             <img src={dessert} className='block w-16 h-[47px] max-sm:justify-self-center' alt='Dessert Icon'/>
                         </span>
                     </div>
-                    <img className='rounded-4xl' src={order_hero_img} />
+                    <img className='rounded-4xl' src={order_hero_img} alt="Food delivery hero image" />
             </Hero>
             <div className="bg-white">
                 <Wrapper>
-                    <div className="flex flex-row max-sm:flex-col justify-between">
+                    <div className="flex flex-row max-sm:flex-col justify-between" role="search">
                         <h2 className="text-black max-sm:text-5xl font-display text-sub_title_size">Browser Our full Menu!</h2>
                         <Search
                             onSearch={ handleSearch }
+                            aria-label="Search menu items"
                         />
                     </div>
 
                     {searchTerm && (
-                        <div id="search_filter">
+                        <div id="search_filter" role="region" aria-labelledby="search-results-heading">
+                            <h3 id="search-results-heading" className="text-black font-p font-black my-5 uppercase">Search Results for "{searchTerm}"</h3>
                             <Carousel id="search">
                                 <div className="grid gap-4"
                                         style={{gridTemplateColumns: `repeat(${len_search}, minmax(440px, 1fr))`}}>
@@ -125,7 +128,7 @@ const Order_Online = () => {
                                                 />
                                             ))
                                         ) : (
-                                            <p className="text-black font-p my-5">No results found for "{searchTerm}".</p>
+                                            <p className="text-black font-p my-5" aria-live="polite">No results found for "{searchTerm}".</p>
                                         )}
                             </div>
                         </Carousel>
@@ -136,8 +139,8 @@ const Order_Online = () => {
                     {/* non filtered results */}
                     {!searchTerm && (
                     <main>
-                        <div className="mains">
-                            <p className="text-black font-p font-black my-5 uppercase">Mains</p>
+                        <div className="mains" role="region" aria-labelledby="mains-heading">
+                            <p id="mains-heading" className="text-black font-p font-black my-5 uppercase">Mains</p>
                             <Carousel id="mains">
                                 <div className="grid gap-4"
                                         style={{gridTemplateColumns: `repeat(${len_mains}, minmax(440px, 1fr))`}}>
@@ -156,8 +159,8 @@ const Order_Online = () => {
                             </div>
                         </Carousel>
                     </div>
-                    <div className="breakfast">
-                            <p className="text-black font-p font-black my-10 uppercase">Breakfast</p>
+                    <div className="breakfast" role="region" aria-labelledby="breakfast-heading">
+                            <p id="breakfast-heading" className="text-black font-p font-black my-10 uppercase">Breakfast</p>
                             <Carousel id="breakfast">
                                 <div className="grid gap-4"
                                     style={{gridTemplateColumns: `repeat(${len_breakfast}, minmax(440px, 1fr))`}}>
@@ -176,8 +179,8 @@ const Order_Online = () => {
                             </div>
                         </Carousel>
                     </div>
-                    <div className="lunch">
-                            <p className="text-black font-p font-black my-10 uppercase">Lunch</p>
+                    <div className="lunch" role="region" aria-labelledby="lunch-heading">
+                            <p id="lunch-heading" className="text-black font-p font-black my-10 uppercase">Lunch</p>
                             <Carousel id="lunch">
                                 <div className="grid gap-4"
                                     style={{gridTemplateColumns: `repeat(${len_lunch}, minmax(440px, 1fr))`}}>
@@ -196,8 +199,8 @@ const Order_Online = () => {
                             </div>
                         </Carousel>
                     </div>
-                    <div className="dinner">
-                            <p className="text-black font-p font-black my-10 uppercase">Dinner</p>
+                    <div className="dinner" role="region" aria-labelledby="dinner-heading">
+                            <p id="dinner-heading" className="text-black font-p font-black my-10 uppercase">Dinner</p>
                             <Carousel id="dinner">
                                 <div className="grid gap-4"
                                     style={{gridTemplateColumns: `repeat(${len_dinner}, minmax(440px, 1fr))`}}>
@@ -216,8 +219,8 @@ const Order_Online = () => {
                             </div>
                         </Carousel>
                     </div>
-                    <div className="dessert">
-                            <p className="text-black font-p font-black my-10 uppercase">Dessert</p>
+                    <div className="dessert" role="region" aria-labelledby="dessert-heading">
+                            <p id="dessert-heading" className="text-black font-p font-black my-10 uppercase">Dessert</p>
                             <Carousel id="dessert">
                                 <div className="grid gap-4"
                                     style={{gridTemplateColumns: `repeat(${len_dessert}, minmax(440px, 1fr))`}}>
@@ -236,8 +239,8 @@ const Order_Online = () => {
                             </div>
                         </Carousel>
                     </div>
-                    <div className="non_alcoholic">
-                            <p className="text-black font-p font-black my-10 uppercase">Non Alcoholic Drinks</p>
+                    <div className="non_alcoholic" role="region" aria-labelledby="non-alcoholic-heading">
+                            <p id="non-alcoholic-heading" className="text-black font-p font-black my-10 uppercase">Non Alcoholic Drinks</p>
                             <Carousel id="menu_non_alcoholic">
                                 <div className="grid gap-4"
                                     style={{gridTemplateColumns: `repeat(${len_non_alcoholic}, minmax(440px, 1fr))`}}>
@@ -256,8 +259,8 @@ const Order_Online = () => {
                             </div>
                         </Carousel>
                     </div>
-                    <div className="alcoholic">
-                            <p className="text-black font-p font-black my-10 uppercase">Alcoholic Drinks</p>
+                    <div className="alcoholic" role="region" aria-labelledby="alcoholic-heading">
+                            <p id="alcoholic-heading" className="text-black font-p font-black my-10 uppercase">Alcoholic Drinks</p>
                             <Carousel id="menu_alcoholic">
                                 <div className="grid gap-4"
                                     style={{gridTemplateColumns: `repeat(${len_alcoholic}, minmax(440px, 1fr))`}}>

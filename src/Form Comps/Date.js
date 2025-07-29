@@ -5,7 +5,7 @@ import { forwardRef } from 'react'
 import clockIcon_green from '../Img/icons_assets/clock_green.png'
 import clockIcon_white from '../Img/icons_assets/clock_white.png'
 
-const DateSelector = ({ label, name, touched, error, dispatch }) => {
+const DateSelector = ({ label, name, touched, error, dispatch, 'aria-label': ariaLabel, 'aria-invalid': ariaInvalid, 'aria-describedby': ariaDescribedBy }) => {
   const { setFieldValue, values, setFieldTouched } = useFormikContext()
 
   const isDateSelected = values[name] && !isNaN(new Date(values[name]))
@@ -15,15 +15,16 @@ const DateSelector = ({ label, name, touched, error, dispatch }) => {
 
   const CustomDateInput = forwardRef(({ value, onClick }, ref) => (
     <div className="relative">
-      <input
-        type="text"
-        className={inputClasses}
-        onClick={onClick}
-        ref={ref}
-        value={value}
-        readOnly
-        placeholder="yyyy/MM/dd"
-      />
+        <input
+          type="text"
+          className={inputClasses}
+          onClick={onClick}
+          ref={ref}
+          value={value}
+          readOnly
+          placeholder="yyyy/MM/dd"
+          aria-label={ariaLabel || label}
+        />
       <img
         src={iconSrc}
         alt="Calendar Icon"
@@ -52,9 +53,10 @@ const DateSelector = ({ label, name, touched, error, dispatch }) => {
               isClearable={true}
               minDate={new Date()}
               onCalendarClose={() => setFieldTouched(name, true)}
+              aria-label={ariaLabel || label}
           />
           {touched && error ? (
-              <div className='h-10 text-red-700 py-4'>
+              <div className='h-10 text-red-700 py-4' id={`${name}-error`}>
                   <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />
               </div>) : (
               <div className='h-10 text-red-700 py-4'></div>

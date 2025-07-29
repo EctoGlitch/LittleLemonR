@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ label, onClick, type, className }) => {
+const Button = ({ label, onClick, type, className, 'aria-label': ariaLabel }) => {
     return (
         <>
             <button
@@ -8,6 +8,7 @@ const Button = ({ label, onClick, type, className }) => {
                 hover:bg-white hover:font-semibold active:bg-light_green active:text-white disabled:bg-light_orange disabled:cursor-not-allowed transition ease-in-out duration-450 ${className}`}
                 onClick={onClick}
                 type={type}
+                aria-label={ariaLabel || label}
             >
                 <p>{label}</p>
             </button>

@@ -1,10 +1,8 @@
-import { ErrorMessage, useFormikContext } from 'formik'
 import Drop_Down from '../Form Comps/Drop_Down'
 import clockIcon_white from '../Img/icons_assets/clock_white.png'
 import clockIcon_green from '../Img/icons_assets/clock_green.png'
 
-const TimeSelector = ({ label, name, touched, error, availableTimes }) => {
-  const { setFieldValue, values, setFieldTouched } = useFormikContext()
+const TimeSelector = ({ label, name, touched, error, availableTimes, 'aria-label': ariaLabel, 'aria-invalid': ariaInvalid, 'aria-describedby': ariaDescribedBy }) => {
 
   const timeOptions = availableTimes.map(time => ({
     label: time,
@@ -23,6 +21,9 @@ const TimeSelector = ({ label, name, touched, error, availableTimes }) => {
         options={timeOptions}
         touched={touched}
         error={error}
+        aria-label={ariaLabel || label}
+        aria-invalid={ariaInvalid || (touched && error ? "true" : "false")}
+        aria-describedby={ariaDescribedBy || (touched && error ? `${name}-error` : undefined)}
       />
     </>
   )
