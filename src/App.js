@@ -9,6 +9,7 @@ import { CartProvider, useCart } from './Core Comps/cart_context'
 import Alert from './Alert Comps/Alert'
 import { useReducer } from 'react'
 import { fetchAPI } from './Core Comps/BookingApi'
+import HelpButton from './Core Comps/HelpButton';
 
 export const initializeTimes = () => {
   return fetchAPI(new Date())
@@ -39,6 +40,7 @@ function AppContent() {
         <Footer/>
       </main>
       <Alert message={alertMessage} type={alertType} />
+      <HelpButton />
     </>
   )
 }
