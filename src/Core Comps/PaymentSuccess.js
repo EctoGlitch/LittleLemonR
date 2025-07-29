@@ -2,13 +2,21 @@
 import logo from '../Img/icons_assets/LogoM.svg'
 import { useEffect, useState } from 'react'
 
+const formatTime = (time24h) => {
+    const [hours, minutes] = time24h.split(':').map(Number)
+    const ampm = hours >= 12 ? 'PM' : 'AM'
+    const formattedHours = hours % 12 || 12
+    return `${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`
+}
+
 const PaymentSuccess = () => {
     const [successInfo, setSuccessInfo] = useState(null)
 
     useEffect(() => {
         const storedSuccessInfo = localStorage.getItem('successInfo')
         if (storedSuccessInfo) {
-            setSuccessInfo(JSON.parse(storedSuccessInfo))
+            const parsedInfo = JSON.parse(storedSuccessInfo)
+            setSuccessInfo(parsedInfo)
             localStorage.removeItem('successInfo')
         }
     }, [])
@@ -31,8 +39,9 @@ const PaymentSuccess = () => {
                 <img src={logo} className='w-16 h-24 drop-shadow-2xl'/>
                 <p className="text-xl mb-6">Thank you for your reservation.</p>
                 <div className="text-left text-lg">
+                    <p><strong>Name:</strong> {reservationDetails.name}</p>
                     <p><strong>Date:</strong> {new Date(reservationDetails.date).toISOString().split('T')[0]}</p>
-                    <p><strong>Time:</strong> {new Date(reservationDetails.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</p>
+                    <p><strong>Time:</strong> {formatTime(reservationDetails.time)}</p>
                     <p><strong>Guests:</strong> {reservationDetails.guests}</p>
                     <p><strong>Occasion:</strong> {reservationDetails.occasion}</p>
                 </div>
@@ -46,7 +55,9 @@ const PaymentSuccess = () => {
             <>
                 <h1 className="text-gold font-display text-display_size max-sm:text-6xl text-7xl mb-4">Payment Successful!</h1>
                 <img src={logo} className='w-16 h-24 drop-shadow-2xl'/>
-                <p className="text-xl mb-6">Thank you for your order.<br/>{message}</p>
+                <p className="text-xl mb-6">Thank you for your order.</p>
+                {successInfo.name && <p className="text-xl mb-6"><strong>Name:</strong> {successInfo.name}</p>}
+                <p className="text-xl mb-6">{message}</p>
             </>
         )
     }

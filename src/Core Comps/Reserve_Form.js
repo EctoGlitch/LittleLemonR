@@ -21,7 +21,7 @@ import glasses_white from '../Img/icons_assets/glasses-white.png'
 import green_group from '../Img/icons_assets/group_green.png'
 import white_group from '../Img/icons_assets/group_white.png'
 
-const Reserve_Form = ({ onContinueToBilling, initialValues }) => {
+const Reserve_Form = ({ onContinueToBilling, initialValues, availableTimes, dispatch }) => {
     const defaultInitialValues = { user_name: '', email: '', phone: '', date: '', time: '', num_of_diners: '', occasion: '', seating: '' };
     const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues;
 
@@ -83,12 +83,14 @@ const Reserve_Form = ({ onContinueToBilling, initialValues }) => {
                                         name='date'
                                         touched={touched.date}
                                         error={errors.date}
+                                        dispatch={dispatch}
                                     />
                                     <TimeSelector
                                         label='Time'
                                         name='time'
                                         touched={touched.time}
                                         error={errors.time}
+                                        availableTimes={availableTimes}
                                     />
                                 </div>
                                     <div className='grid grid-cols-2 max-sm:flex-col max-sm:flex gap-6'>

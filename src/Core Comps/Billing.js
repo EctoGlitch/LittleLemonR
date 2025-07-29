@@ -42,10 +42,14 @@ const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, b
             clearCart()
             localStorage.removeItem('pendingItems')
 
-            const successInfo = { confirmationType: values.confirmation }
+            const successInfo = {
+                confirmationType: values.confirmation,
+                name: values.bill_name
+            }
 
             if (reservationData && Object.keys(reservationData).length > 0) {
                 successInfo.reservationDetails = {
+                    name: reservationData.user_name,
                     date: reservationData.date,
                     time: reservationData.time,
                     guests: reservationData.num_of_diners,

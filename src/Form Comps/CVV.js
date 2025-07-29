@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Field, ErrorMessage, useFormikContext } from 'formik'
+import creditCardIcon_white from '../Img/icons_assets/creditcard.svg'
+import creditCardIcon_green from '../Img/icons_assets/creditcard.svg' // Assuming green version is also creditcard.svg or similar
 
 const CVV_Input = ({ label, name, touched, error }) => {
     const { setFieldValue, values } = useFormikContext()
@@ -18,20 +20,32 @@ const CVV_Input = ({ label, name, touched, error }) => {
         setDisplayValue(truncatedDigits)
     }
 
+    const isPlaceholder = !displayValue;
+    const imageSrc = isPlaceholder ? creditCardIcon_green : creditCardIcon_white;
+    const textColorClass = isPlaceholder ? 'text-black' : 'text-white';
+    const bgColorClass = isPlaceholder ? 'bg-[#fff]' : 'bg-dark_green';
+
     return (
         <>
             <div className='w-full flex flex-col'>
                 <label className='font-p text-black font-bold py-3'>{ label }</label>
-                <Field
-                    className='font-p text-black h-[80px] p-6 rounded-4xl'
-                    type="text"
-                    name={name}
-                    placeholder={label}
-                    inputMode="numeric"
-                    maxLength="3"
-                    value={displayValue}
-                    onChange={handleCVVChange}
-                />
+                <div className={`w-full h-[80px] relative font-p py-6 rounded-4xl focus:outline-black appearance-none text-center flex items-center justify-between px-4 ${textColorClass} ${bgColorClass}`}>
+                    <img
+                        src={imageSrc}
+                        alt="Credit Card Icon"
+                        className="w-6 h-6 block"
+                    />
+                    <Field
+                        className={`flex-grow bg-transparent outline-none text-center ${textColorClass}`}
+                        type="text"
+                        name={name}
+                        placeholder={label}
+                        inputMode="numeric"
+                        maxLength="3"
+                        value={displayValue}
+                        onChange={handleCVVChange}
+                    />
+                </div>
                 {touched && error ? (
                     <div className='h-10 text-red-700 py-4'>
                         <ErrorMessage className='error font-p font-semibold' name={ name } component="div" />

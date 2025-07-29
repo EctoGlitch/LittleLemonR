@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 import Hero from './Heading_Section'
 import hero_img from '../Img/icons_assets/restaurant.jpg'
 
@@ -12,6 +12,7 @@ const Reservations = () => {
     const [reservationData, setReservationData] = useState({})
     const [billingData, setBillingData] = useState({})
     const [finalFormData, setFinalFormData] = useState({})
+    const { availableTimes, dispatch } = useOutletContext();
 
     const handleContinueToBilling = useCallback((data) => {
         setReservationData(data)
@@ -35,7 +36,12 @@ const Reservations = () => {
                 </div>
             </Hero>
             {!showBilling ? (
-                <Reserve_Form onContinueToBilling={handleContinueToBilling} initialValues={reservationData} />
+                <Reserve_Form
+                    onContinueToBilling={handleContinueToBilling}
+                    initialValues={reservationData}
+                    availableTimes={availableTimes}
+                    dispatch={dispatch}
+                />
             ) : (
                 <Billing
                     onGoBackToReservation={handleGoBackToReservation}
