@@ -21,11 +21,11 @@ import glasses_white from '../Img/icons_assets/glasses-white.png'
 import green_group from '../Img/icons_assets/group_green.png'
 import white_group from '../Img/icons_assets/group_white.png'
 
-const Reservations = ({ onContinueToBilling, initialValues }) => {
+const Reserve_Form = ({ onContinueToBilling, initialValues }) => {
     const defaultInitialValues = { user_name: '', email: '', phone: '', date: '', time: '', num_of_diners: '', occasion: '', seating: '' };
     const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues;
 
-    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
     const validationSchema = Yup.object({
         user_name: Yup.string().min(2, 'Minimum 2 characters').required('Required'),
@@ -42,7 +42,6 @@ const Reservations = ({ onContinueToBilling, initialValues }) => {
         console.log('Form Data:', values)
         onContinueToBilling(values);
     }
-
 
     return (
         <>
@@ -134,8 +133,7 @@ const Reservations = ({ onContinueToBilling, initialValues }) => {
                     </Formik>
                 </Wrapper>
             </div>
-            
         </>
     )
 }
-export default Reservations
+export default Reserve_Form

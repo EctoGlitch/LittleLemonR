@@ -61,11 +61,10 @@ const Cart = () => {
     }, [items])
 
     const [selectedValue, setSelectedValue] = useState('')
-    
+
     const handleDropdownChange = (value) => {
         setSelectedValue(value)
     }
-
 
     return (
         <div className='bg-white'>
@@ -93,7 +92,7 @@ const Cart = () => {
                             />
                         </div>
                         </div>
-                    
+
                     <hr/>
                     <div>
                         <label className='text-black font-black font-p '>Cutlery</label>
@@ -214,7 +213,6 @@ const Cart = () => {
                 ) : (
                     <Billing onGoBackToReservation={handleGoBackToCart} initialValues={billingData} onFinalSubmit={handleFinalSubmit} reservationFormValid={items.length > 0} backButtonLabel="Review Cart" />
                 )}
-
         </div>
     )
 }

@@ -15,14 +15,13 @@ import { useNavigate } from 'react-router-dom'
 
 import { states, countries } from "./Drop_Down_Context"
 
-
 import globe_green from '../Img/icons_assets/globe_green.png'
 import globe_white from '../Img/icons_assets/globe_white.png'
 
 const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, backButtonLabel = 'Review Cart', reservationData }) => {
-    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-    const defaultInitialValues = { bill_name: '', bill_email: '', bill_phone: '', card: '', expiration: '', cvv: '', address: '', zip_code: '', country: '', state: '', confirmation: '' }
-    const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues
+    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+    const defaultInitialValues = { bill_name: '', bill_email: '', bill_phone: '', card: '', expiration: '', cvv: '', address: '', zip_code: '', country: '', state: '', confirmation: '' };
+    const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues;
 
     const validationSchema = Yup.object({
             bill_name: Yup.string().min(2, 'Minimum 2 characters').required('Required'),
@@ -59,7 +58,6 @@ const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, b
 
     const { clearCart } = useCart()
     const navigate = useNavigate()
-
 
     return (
         <>
