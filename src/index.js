@@ -1,22 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 //pages
 import Home from './Core Comps/Home'
-import About from './Core Comps/About';
-import Menu from './Core Comps/Menu';
-import Reservations from './Core Comps/Reservations';
+import About from './Core Comps/About'
+import Menu from './Core Comps/Menu'
+import Reservations from './Core Comps/Reservations'
 import Billing from './Core Comps/Billing'
-import Order_Online from './Core Comps/Order_Online';
-import Login from './Core Comps/Login';
-import Register from './Core Comps/Register';
-import Cart from './Core Comps/Cart';
-import Not_Found from './Core Comps/Not_Found';
-import Menu_Item_Detail from './Core Comps/Menu_Item_Detail';
+import Order_Online from './Core Comps/Order_Online'
+import Login from './Core Comps/Login'
+import Register from './Core Comps/Register'
+import Cart from './Core Comps/Cart'
+import Not_Found from './Core Comps/Not_Found'
+import Menu_Item_Detail from './Core Comps/Menu_Item_Detail'
+import PaymentSuccess from './Core Comps/PaymentSuccess'
 
 const router = createBrowserRouter([
   {
@@ -68,21 +69,21 @@ const router = createBrowserRouter([
         path: '/cart',
         element: <Cart/>
       },
-      // {
-      //   path: '/cart/:itemName',
-      //   element: <Menu_Item_Detail/>
-      // },
+      {
+        path: '/paymentsuccess',
+        element: <PaymentSuccess/>
+      },
     ]
   }
-]);
-const root = ReactDOM.createRoot(document.getElementById('root'));
+])
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals()

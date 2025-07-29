@@ -65,7 +65,6 @@ const addItem = (itemsToAdd) => {
     const clearCart = () => {
         setItems([])
         localStorage.removeItem('cartItemArray')
-        triggerAlert('Cart cleared!', 'info')
     }
 
     return (

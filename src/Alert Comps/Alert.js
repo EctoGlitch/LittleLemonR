@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Add_To_Cart_Alert = ({ message, type, duration = 5000 }) => {
+const Alert = ({ message, type, duration = 5000 }) => {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
@@ -44,4 +44,4 @@ const Add_To_Cart_Alert = ({ message, type, duration = 5000 }) => {
     )
 }
 
-export default Add_To_Cart_Alert
+export default Alert

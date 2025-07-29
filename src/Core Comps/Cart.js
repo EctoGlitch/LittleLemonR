@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { useCart } from './cart_context'
 import Wrapper from './Wrapper'
 import ClearCartButton from '../Form Comps/Clear_Cart_Button'
@@ -6,6 +6,10 @@ import RemoveItemButton from '../Form Comps/Remove_Item_Button'
 import Button from '../Form Comps/Button'
 import Billing from './Billing'
 import { useNavigate } from 'react-router-dom'
+import { Standalone_Drop_Down } from '../Form Comps/Drop_Down'
+import { durations } from './Drop_Down_Context'
+import green_bike from '../Img/icons_assets/bike_green.png'
+import black_bike from '../Img/icons_assets/bike_black.png'
 
 import * as menu from './menu_context'
 import Carousel from './Carousel'
@@ -16,7 +20,7 @@ const Cart = () => {
     const { items, removeItem, clearCart } = useCart()
     const [showBilling, setShowBilling] = useState(false)
     const [billingData, setBillingData] = useState({})
-const [finalFormData, setFinalFormData] = useState({})
+    const [finalFormData, setFinalFormData] = useState({})
     const [showWrapper, setShowWrapper] = useState(true)
 
     const sortMenu = ()  => {
@@ -44,18 +48,62 @@ const [finalFormData, setFinalFormData] = useState({})
         setFinalFormData(combinedData)
         console.log('Final Combined Order Data:', combinedData)
 
-        alert('Order submitted successfully! Check console for data.')
         clearCart()
         setBillingData({})
         setShowBilling(false)
-        navigate('/')
+        setTimeout(() => {
+            navigate('/PaymentSuccess')
+        }, 1000)
     }, [items, clearCart, navigate])
+
+    useEffect(() => {
+        console.log('Cart items updated:', items)
+    }, [items])
+
+    const [selectedValue, setSelectedValue] = useState('')
+    
+    const handleDropdownChange = (value) => {
+        setSelectedValue(value)
+    }
 
 
     return (
         <div className='bg-white'>
             {showWrapper && !showBilling && (
                 <Wrapper id='more'>
+                    <div className='flex justify-between items-center h-[80px] py-24'>
+                        <div className='flex items-center h-[80px] my-auto'>
+                            <img className='w-6 h-6 mx-3' src={green_bike} alt='green bike' />
+                            <p className='font-p flex items-center text-base h-[80px] leading-3'>
+                            <strong>Standard Delivery Time:</strong> 20 minutes
+                            </p>
+                        </div>
+                        <div className='w-[20rem] flex items-center'>
+                            <Standalone_Drop_Down
+                            label="Select an option"
+                            name="location"
+                            options={durations}
+                            img_defualt={black_bike}
+                            img_active={black_bike}
+                            img_w="w-6"
+                            img_h="h-6"
+                            value={selectedValue}
+                            onChange={handleDropdownChange}
+                            className="flex items-center h-[80px]"
+                            />
+                        </div>
+                        </div>
+                    
+                    <hr/>
+                    <div>
+                        <label className='text-black font-black font-p '>Cutlery</label>
+                        <div className='flex justify-between items-center'>
+                            <label className='text-black font-semibold font-p my-5' for="cutlery">Help reduce plastic waste. Only ask for cutlery if you need it.</label>
+                            <input type="checkbox" name="cutlery" value={false}></input>
+                        </div>
+                    </div>
+                    <hr/>
+
                     <h1 className="font-display text-black font-semibold text-[48pt] py-5">Cart</h1>
                     <div >
                         <p className="text-black font-p font-black my-5 uppercase">Add More To Your Order!</p>
@@ -82,7 +130,7 @@ const [finalFormData, setFinalFormData] = useState({})
             {showWrapper && !showBilling ? (
                 items.length === 0 ? (
                     <Wrapper><p className="font-p py-20 text-black">Your cart is empty.</p></Wrapper>
-                        
+
                     ) : (
                         <>
                         <Wrapper>
@@ -149,13 +197,16 @@ const [finalFormData, setFinalFormData] = useState({})
                                         }, 0) * 1.10 + 5 + 3).toFixed(2)
                                     }
                                 </p>
-                                <ClearCartButton
+                                <div className='flex justify-between max-sm:flex-col max-sm:my-10'>
+                                    <ClearCartButton
                                     label='Clear Cart'
                                     onClick={clearCart} />
                                 <Button
+                                    className="max-sm:my-10"
                                     label='Proceed to Payment'
                                     onClick={handleContinueToBilling}
                                 />
+                                </div>
                             </div>
                             </Wrapper>
                         </>
@@ -163,7 +214,7 @@ const [finalFormData, setFinalFormData] = useState({})
                 ) : (
                     <Billing onGoBackToReservation={handleGoBackToCart} initialValues={billingData} onFinalSubmit={handleFinalSubmit} reservationFormValid={items.length > 0} backButtonLabel="Review Cart" />
                 )}
-            
+
         </div>
     )
 }

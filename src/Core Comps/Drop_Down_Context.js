@@ -179,5 +179,13 @@ const countries = [
         { value: 'BR', label: 'Brazil' },
     ]
 
+const durations = [
+        { value: 10, label: '10 Minutes' },
+        { value: 15, label: '15 Minutes' },
+        { value: 20, label: '20 Minutes' },
+        { value: 25, label: '25 Minutes' },
+        { value: 30, label: '30 Minutes' },
+    ]
 
-export { num_of_diners, occasions, states, countries }
+
+export { num_of_diners, occasions, states, countries, durations }

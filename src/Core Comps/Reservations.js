@@ -23,18 +23,6 @@ const Reservations = () => {
         setShowBilling(false)
     }, [])
 
-    const handleFinalSubmit = useCallback((billingValues) => {
-        const combinedData = { ...reservationData, ...billingValues }
-        setFinalFormData(combinedData)
-        console.log('Final Combined Form Data:', combinedData)
-
-        alert('Forms submitted successfully! Check console for data.')
-        setReservationData({}) 
-        setBillingData({}) 
-        setShowBilling(false) 
-        navigate('/') 
-    }, [reservationData, navigate])
-
     return (
         <>
             <Hero>
@@ -49,7 +37,13 @@ const Reservations = () => {
             {!showBilling ? (
                 <Reserve_Form onContinueToBilling={handleContinueToBilling} initialValues={reservationData} />
             ) : (
-                <Billing onGoBackToReservation={handleGoBackToReservation} initialValues={billingData} onFinalSubmit={handleFinalSubmit} reservationFormValid={Object.keys(reservationData).length > 0 && Object.values(reservationData).every(val => val !== '')} backButtonLabel="Go Back to Reservation" />
+                <Billing
+                    onGoBackToReservation={handleGoBackToReservation}
+                    initialValues={billingData}
+                    reservationFormValid={Object.keys(reservationData).length > 0 && Object.values(reservationData).every(val => val !== '')}
+                    backButtonLabel="Go Back to Reservation"
+                    reservationData={reservationData}
+                />
             )}
         </>
     )

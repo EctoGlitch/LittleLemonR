@@ -2,14 +2,14 @@ import logo from './Img/icons_assets/LogoM.svg'
 import './App.css'
 import './Core Comps/Animation.css'
 import Header from './Core Comps/Header'
-import { Outlet } from 'react-router-dom';
-import Footer from './Core Comps/Footer';
-import { Helmet } from "react-helmet";
-import { CartProvider, useCart } from './Core Comps/cart_context';
-import Add_To_Cart_Alert from './Alert Comps/Add_To_Cart';
+import { Outlet } from 'react-router-dom'
+import Footer from './Core Comps/Footer'
+import { Helmet } from "react-helmet"
+import { CartProvider, useCart } from './Core Comps/cart_context'
+import Alert from './Alert Comps/Alert'
 
 function AppContent() {
-  const { alertMessage, alertType } = useCart();
+  const { alertMessage, alertType } = useCart()
   return (
     <>
       <Helmet>
@@ -26,9 +26,9 @@ function AppContent() {
         <Outlet/>
         <Footer/>
       </main>
-      <Add_To_Cart_Alert message={alertMessage} type={alertType} />
+      <Alert message={alertMessage} type={alertType} />
     </>
-  );
+  )
 }
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
     <CartProvider>
       <AppContent />
     </CartProvider>
-  );
+  )
 }
 
-export default App;
+export default App
