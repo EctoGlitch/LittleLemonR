@@ -6,7 +6,7 @@ function Radio({ label1, value1, label2, value2, name, touched, error }) {
 
   return (
     <>
-    <div className="w-full">
+    <div className={`w-full p-4 rounded-4xl ${touched && error ? 'border-2 border-red-700' : ''}`}>
       <div id="my-radio-group" className='font-p text-black font-bold'>Seating Options: </div>
           <div role="group">
             <label className='w-full h-[60px] py-4 flex flex-row-reverse justify-between align-middle'>

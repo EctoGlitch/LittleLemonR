@@ -28,8 +28,8 @@ const Reserve_Form = ({ onContinueToBilling, initialValues, availableTimes, disp
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
     const validationSchema = Yup.object({
-        user_name: Yup.string().min(2, 'Minimum 2 characters').required('Required'),
-        email: Yup.string().email('Invalid email format').required('Required'),
+        user_name: Yup.string().min(2, 'Minimum 2 characters').required('must state your name as the reservation holder, this is required.'),
+        email: Yup.string().email('Invalid email format').required('Must provide an email as the reservation holder, this is required.'),
         phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').min(10, 'Phone number not long enough.'),
         date: Yup.string().required('Must enter a date'),
         time: Yup.string().required('Must enter a time slot'),

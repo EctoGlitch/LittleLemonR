@@ -9,7 +9,7 @@ const DateSelector = ({ label, name, touched, error, dispatch, 'aria-label': ari
   const { setFieldValue, values, setFieldTouched } = useFormikContext()
 
   const isDateSelected = values[name] && !isNaN(new Date(values[name]))
-  const inputClasses = `h-[80px] w-full relative font-p p-6 rounded-4xl focus:outline-black focus:ring-2 focus:ring-yellow-500 ${isDateSelected ? 'text-white bg-dark_green' : 'text-black bg-[#fff]'}`
+  const inputClasses = `h-[80px] w-full relative font-p p-6 rounded-4xl focus:outline-black focus:ring-2 focus:ring-yellow-500 ${isDateSelected ? 'text-white bg-dark_green' : 'text-black bg-[#fff]'} ${touched && error ? 'border-2 border-red-700' : ''}`
   const labelClasses = `font-p font-bold py-3 ${isDateSelected ? 'text-white' : 'text-dark_green'}`
   const iconSrc = isDateSelected ? clockIcon_white : clockIcon_green
 

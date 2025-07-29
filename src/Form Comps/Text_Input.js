@@ -46,7 +46,7 @@ const Text_Input = ({ label, type, name, touched, error }) => {
         <div className='w-full flex flex-col'>
             <label className='font-p text-black font-bold py-3'>{ label }</label>
             <Field
-                className='font-p text-black h-[80px] p-6 rounded-4xl'
+                className={`font-p text-black h-[80px] p-6 rounded-4xl ${touched && error ? 'border-2 border-red-700' : ''}`}
                 type={type}
                 name={name}
                 placeholder={label}

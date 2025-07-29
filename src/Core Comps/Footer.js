@@ -13,7 +13,6 @@ const Footer = () => {
             <footer className='max-sm:overflow-hidden  px-80 py-16 max-sm:px-6 max-sm:gap-y-10 bg-dark_green grid max-sm:grid-cols-1 grid-cols-footer' role="contentinfo">
                 <img className='w-36 flex justify-start max-sm:ml-8 max-sm:mx-auto' src={foot_logo} alt="Little Lemon logo"/>
                 <div className='flex justify-start max-sm:ml-8'>
-                    <h3 className="text-gold font-display text-xl mb-4">Navigation</h3>
                     <ul className='h-64 flex flex-col justify-between list-none font-p text-white ' aria-label="Main navigation">
                         <li className='hover:font-bold active:text-black'>
                             <Link to='/' aria-label="Home">
@@ -48,7 +47,6 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className='flex justify-start max-sm:ml-8'>
-                    <h3 className="text-gold font-display text-xl mb-4">Contact</h3>
                     <ul className='h-64 flex flex-col justify-between list-none font-p text-white ' aria-label="Contact Information">
                         <li>
                             <address aria-label="Address">910 N Lake Shore<br/>
@@ -66,7 +64,6 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className='flex justify-end max-sm:justify-start max-sm:ml-8'>
-                    <h3 className="text-gold font-display text-xl mb-4">Social Media</h3>
                     <ul className='h-64 grid grid-cols-2 grid-rows-3 gap-y-5 justify-between list-none font-p text-white ' aria-label="Social Media Links">
                         <li>
                             <a href='https://www.facebook.com/' aria-label="Facebook">

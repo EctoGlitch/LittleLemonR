@@ -104,7 +104,9 @@ const Cart = () => {
                     </div>
                     <hr/>
 
-                    <h1 className="font-display text-black font-semibold text-[48pt] py-5">Cart</h1>
+                    <div className="bg-dark_green py-11 pl-7">
+                        <h1 className="text-gold font-display text-display_size max-sm:text-6xl text-7xl -mt-7">Cart</h1>
+                    </div>
                     <div role="region" aria-labelledby="add-more-heading">
                         <p id="add-more-heading" className="text-black font-p font-black my-5 uppercase">Add More To Your Order!</p>
                         <Carousel id="more">

@@ -31,6 +31,9 @@ const About = () => {
             <div className="bg-white">
                 <Wrapper>
                     <div>
+                        <div className="bg-dark_green py-11 pl-7">
+                            <h1 className="text-gold font-display text-display_size max-sm:text-6xl text-7xl -mt-7">About Little Lemon</h1>
+                        </div>
                         <h2 className="text-black font-display text-sub_title_size max-sm:text-5xl">Two Brothers</h2>
                         <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-20">
                             <div>

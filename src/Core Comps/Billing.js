@@ -24,17 +24,17 @@ const Billing = ({ onGoBackToReservation, initialValues, reservationFormValid, b
     const currentInitialValues = Object.keys(initialValues).length > 0 ? initialValues : defaultInitialValues
 
     const validationSchema = Yup.object({
-            bill_name: Yup.string().min(2, 'Minimum 2 characters').required('Required'),
-            bill_email: Yup.string().email('Invalid email format').required('Required'),
+            bill_name: Yup.string().min(2, 'Minimum 2 characters').required('Name of Card Holder was not provided'),
+            bill_email: Yup.string().email('Invalid email format').required('Email of Card Holder was not provided'),
             bill_phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').min(10, 'Phone number not long enough.'),
-            card: Yup.string().min(16, 'Card number not long enough.').required('Required'),
-            expiration: Yup.string().required('Required'),
-            cvv: Yup.string().required('Required'),
-            address: Yup.string().required('Required'),
-            zip_code: Yup.string().required('Required'),
-            country: Yup.string().required('Required'),
-            state: Yup.string().required('Required'),
-            confirmation: Yup.string().required('Required')
+            card: Yup.string().min(16, 'Card number not long enough.').required('Please provide payment method'),
+            expiration: Yup.string().required('Plase state the month and year your card expires.'),
+            cvv: Yup.string().required('Please provide your CVV (3 digit code on the back of your card)'),
+            address: Yup.string().required('Billing address was not provided.'),
+            zip_code: Yup.string().required('Missing zip code'),
+            country: Yup.string().required('Country was not provided'),
+            state: Yup.string().required('State / Province was not provided'),
+            confirmation: Yup.string().required('Select the method to recieve confirmation.')
         })
 
         const onSubmit = (values) => {

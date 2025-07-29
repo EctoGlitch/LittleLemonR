@@ -75,7 +75,7 @@ const Drop_Down = ({ label, name, options, img_defualt, img_active, img_w, img_h
             <div className='w-full relative'>
                 <button
                     onClick={toggleDropdown}
-                    className={`w-full h-[80px] relative font-p py-6 rounded-4xl focus:outline-black appearance-none text-center flex items-center justify-between px-4 ${selectedOption === placeholderText ? 'text-black bg-[#fff]' : 'bg-dark_green text-white'}`}
+                    className={`w-full h-[80px] relative font-p py-6 rounded-4xl focus:outline-black appearance-none text-center flex items-center justify-between px-4 ${selectedOption === placeholderText ? 'text-black bg-[#fff]' : 'bg-dark_green text-white'} ${touched && error ? 'border-2 border-red-700' : ''}`}
                     aria-label={ariaLabel || label}
                 >
 
