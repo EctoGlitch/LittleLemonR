@@ -9,11 +9,11 @@ import Button_full from '../Form Comps/Button_full'
 const Register = () => {
     const initialValues = {f_name: '', l_name: '', email: '', password: '', re_password: ''}
     const validationSchema = Yup.object({
-        f_name: Yup.string().min(2, 'Minimum 2 characters').required('Required'),
-        l_name: Yup.string().min(2, 'Minimum 2 characters').required('Required'),
-        email: Yup.string().email('Invalid email format').required('Required'),
-        password: Yup.string().required('Required'),
-        re_password: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Required')
+        f_name: Yup.string().min(2, 'Minimum 2 characters').required('First name missing.'),
+        l_name: Yup.string().min(2, 'Minimum 2 characters').required('Last name missing.'),
+        email: Yup.string().email('Invalid email format').required('Email missing'),
+        password: Yup.string().required('No password provided.'),
+        re_password: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('No comfirmation password provided.')
     })
     const onSubmit = (values, { resetForm }) => {
             console.log('Form Data:', values)

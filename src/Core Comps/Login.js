@@ -10,8 +10,8 @@ import Button_full from "../Form Comps/Button_full"
 const Login = () => {
     const initialValues = { email: '' }
         const validationSchema = Yup.object({
-                email: Yup.string().email('Invalid email format').required('Required'),
-                password: Yup.string().required('Required'),
+                email: Yup.string().email('Invalid email format').required('Please enter your email.'),
+                password: Yup.string().required('Please enter your password.'),
             })
             const onSubmit = (values) => {
                 console.log('Form Data:', values)
